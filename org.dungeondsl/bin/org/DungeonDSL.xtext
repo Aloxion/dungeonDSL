@@ -1,0 +1,9 @@
+grammar org.DungeonDSL with org.eclipse.xtext.common.Terminals
+
+generate dungeonDSL "http://www.DungeonDSL.org"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
