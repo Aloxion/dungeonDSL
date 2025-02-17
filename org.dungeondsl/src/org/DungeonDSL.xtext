@@ -2,8 +2,32 @@ grammar org.DungeonDSL with org.eclipse.xtext.common.Terminals
 
 generate dungeonDSL "http://www.DungeonDSL.org"
 
-Model:
-	greetings+=Greeting*;
-	
-Greeting:
-	'Hello' name=ID '!';
+
+Dungeon:
+    'Dungeon' name=ID '{'  
+        'theme' '=' theme=STRING  
+        'lvl' '=' lvl=INT  
+        
+        (floors+=Floor)*
+    '}';  
+    
+Floor:
+    'Floor' name=ID '{'  
+		(rooms+=Room)*
+    '}'; 
+
+Room: 
+	'Room' name=ID '{'
+		'size' '=' size=Sizes
+		'type' '=' type=RoomTypes
+	'}'
+;
+    
+
+enum Sizes:
+	LARGE | MEDIUM | SMALL
+;
+
+enum RoomTypes:
+	COMBAT | TREASURE | BOSS | PUZZLE | SHOP
+;
