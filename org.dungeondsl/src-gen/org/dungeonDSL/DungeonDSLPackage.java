@@ -188,13 +188,105 @@ public interface DungeonDSLPackage extends EPackage
   int ROOM__TYPE = 2;
 
   /**
+   * The feature id for the '<em><b>Floor</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ROOM__FLOOR = 3;
+
+  /**
+   * The feature id for the '<em><b>Connections</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ROOM__CONNECTIONS = 4;
+
+  /**
+   * The feature id for the '<em><b>Traps</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ROOM__TRAPS = 5;
+
+  /**
    * The number of structural features of the '<em>Room</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ROOM_FEATURE_COUNT = 3;
+  int ROOM_FEATURE_COUNT = 6;
+
+  /**
+   * The meta object id for the '{@link org.dungeonDSL.impl.TrapImpl <em>Trap</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.dungeonDSL.impl.TrapImpl
+   * @see org.dungeonDSL.impl.DungeonDSLPackageImpl#getTrap()
+   * @generated
+   */
+  int TRAP = 3;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRAP__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Trigger</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRAP__TRIGGER = 1;
+
+  /**
+   * The feature id for the '<em><b>Disarmable</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRAP__DISARMABLE = 2;
+
+  /**
+   * The feature id for the '<em><b>Trigger Chance</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRAP__TRIGGER_CHANCE = 3;
+
+  /**
+   * The number of structural features of the '<em>Trap</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRAP_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link org.dungeonDSL.BOOLEAN <em>BOOLEAN</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.dungeonDSL.BOOLEAN
+   * @see org.dungeonDSL.impl.DungeonDSLPackageImpl#getBOOLEAN()
+   * @generated
+   */
+  int BOOLEAN = 4;
 
   /**
    * The meta object id for the '{@link org.dungeonDSL.Sizes <em>Sizes</em>}' enum.
@@ -204,7 +296,7 @@ public interface DungeonDSLPackage extends EPackage
    * @see org.dungeonDSL.impl.DungeonDSLPackageImpl#getSizes()
    * @generated
    */
-  int SIZES = 3;
+  int SIZES = 5;
 
   /**
    * The meta object id for the '{@link org.dungeonDSL.RoomTypes <em>Room Types</em>}' enum.
@@ -214,7 +306,17 @@ public interface DungeonDSLPackage extends EPackage
    * @see org.dungeonDSL.impl.DungeonDSLPackageImpl#getRoomTypes()
    * @generated
    */
-  int ROOM_TYPES = 4;
+  int ROOM_TYPES = 6;
+
+  /**
+   * The meta object id for the '{@link org.dungeonDSL.EventTrigger <em>Event Trigger</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.dungeonDSL.EventTrigger
+   * @see org.dungeonDSL.impl.DungeonDSLPackageImpl#getEventTrigger()
+   * @generated
+   */
+  int EVENT_TRIGGER = 7;
 
 
   /**
@@ -347,6 +449,103 @@ public interface DungeonDSLPackage extends EPackage
   EAttribute getRoom_Type();
 
   /**
+   * Returns the meta object for the attribute '{@link org.dungeonDSL.Room#getFloor <em>Floor</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Floor</em>'.
+   * @see org.dungeonDSL.Room#getFloor()
+   * @see #getRoom()
+   * @generated
+   */
+  EAttribute getRoom_Floor();
+
+  /**
+   * Returns the meta object for the attribute list '{@link org.dungeonDSL.Room#getConnections <em>Connections</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Connections</em>'.
+   * @see org.dungeonDSL.Room#getConnections()
+   * @see #getRoom()
+   * @generated
+   */
+  EAttribute getRoom_Connections();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.dungeonDSL.Room#getTraps <em>Traps</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Traps</em>'.
+   * @see org.dungeonDSL.Room#getTraps()
+   * @see #getRoom()
+   * @generated
+   */
+  EReference getRoom_Traps();
+
+  /**
+   * Returns the meta object for class '{@link org.dungeonDSL.Trap <em>Trap</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Trap</em>'.
+   * @see org.dungeonDSL.Trap
+   * @generated
+   */
+  EClass getTrap();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.dungeonDSL.Trap#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.dungeonDSL.Trap#getName()
+   * @see #getTrap()
+   * @generated
+   */
+  EAttribute getTrap_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.dungeonDSL.Trap#getTrigger <em>Trigger</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Trigger</em>'.
+   * @see org.dungeonDSL.Trap#getTrigger()
+   * @see #getTrap()
+   * @generated
+   */
+  EAttribute getTrap_Trigger();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.dungeonDSL.Trap#getDisarmable <em>Disarmable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Disarmable</em>'.
+   * @see org.dungeonDSL.Trap#getDisarmable()
+   * @see #getTrap()
+   * @generated
+   */
+  EAttribute getTrap_Disarmable();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.dungeonDSL.Trap#getTriggerChance <em>Trigger Chance</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Trigger Chance</em>'.
+   * @see org.dungeonDSL.Trap#getTriggerChance()
+   * @see #getTrap()
+   * @generated
+   */
+  EAttribute getTrap_TriggerChance();
+
+  /**
+   * Returns the meta object for enum '{@link org.dungeonDSL.BOOLEAN <em>BOOLEAN</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>BOOLEAN</em>'.
+   * @see org.dungeonDSL.BOOLEAN
+   * @generated
+   */
+  EEnum getBOOLEAN();
+
+  /**
    * Returns the meta object for enum '{@link org.dungeonDSL.Sizes <em>Sizes</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -365,6 +564,16 @@ public interface DungeonDSLPackage extends EPackage
    * @generated
    */
   EEnum getRoomTypes();
+
+  /**
+   * Returns the meta object for enum '{@link org.dungeonDSL.EventTrigger <em>Event Trigger</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Event Trigger</em>'.
+   * @see org.dungeonDSL.EventTrigger
+   * @generated
+   */
+  EEnum getEventTrigger();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -492,6 +701,82 @@ public interface DungeonDSLPackage extends EPackage
     EAttribute ROOM__TYPE = eINSTANCE.getRoom_Type();
 
     /**
+     * The meta object literal for the '<em><b>Floor</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ROOM__FLOOR = eINSTANCE.getRoom_Floor();
+
+    /**
+     * The meta object literal for the '<em><b>Connections</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ROOM__CONNECTIONS = eINSTANCE.getRoom_Connections();
+
+    /**
+     * The meta object literal for the '<em><b>Traps</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ROOM__TRAPS = eINSTANCE.getRoom_Traps();
+
+    /**
+     * The meta object literal for the '{@link org.dungeonDSL.impl.TrapImpl <em>Trap</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.dungeonDSL.impl.TrapImpl
+     * @see org.dungeonDSL.impl.DungeonDSLPackageImpl#getTrap()
+     * @generated
+     */
+    EClass TRAP = eINSTANCE.getTrap();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TRAP__NAME = eINSTANCE.getTrap_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Trigger</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TRAP__TRIGGER = eINSTANCE.getTrap_Trigger();
+
+    /**
+     * The meta object literal for the '<em><b>Disarmable</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TRAP__DISARMABLE = eINSTANCE.getTrap_Disarmable();
+
+    /**
+     * The meta object literal for the '<em><b>Trigger Chance</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TRAP__TRIGGER_CHANCE = eINSTANCE.getTrap_TriggerChance();
+
+    /**
+     * The meta object literal for the '{@link org.dungeonDSL.BOOLEAN <em>BOOLEAN</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.dungeonDSL.BOOLEAN
+     * @see org.dungeonDSL.impl.DungeonDSLPackageImpl#getBOOLEAN()
+     * @generated
+     */
+    EEnum BOOLEAN = eINSTANCE.getBOOLEAN();
+
+    /**
      * The meta object literal for the '{@link org.dungeonDSL.Sizes <em>Sizes</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -510,6 +795,16 @@ public interface DungeonDSLPackage extends EPackage
      * @generated
      */
     EEnum ROOM_TYPES = eINSTANCE.getRoomTypes();
+
+    /**
+     * The meta object literal for the '{@link org.dungeonDSL.EventTrigger <em>Event Trigger</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.dungeonDSL.EventTrigger
+     * @see org.dungeonDSL.impl.DungeonDSLPackageImpl#getEventTrigger()
+     * @generated
+     */
+    EEnum EVENT_TRIGGER = eINSTANCE.getEventTrigger();
 
   }
 

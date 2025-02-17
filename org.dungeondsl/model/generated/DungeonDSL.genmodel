@@ -6,6 +6,10 @@
     copyrightFields="false" runtimeVersion="2.29">
   <genPackages prefix="DungeonDSL" basePackage="org" disposableProviderFactory="true"
       fileExtensions="dung" ecorePackage="DungeonDSL.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DungeonDSL.ecore#//BOOLEAN">
+      <genEnumLiterals ecoreEnumLiteral="DungeonDSL.ecore#//BOOLEAN/true"/>
+      <genEnumLiterals ecoreEnumLiteral="DungeonDSL.ecore#//BOOLEAN/false"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="DungeonDSL.ecore#//Sizes">
       <genEnumLiterals ecoreEnumLiteral="DungeonDSL.ecore#//Sizes/LARGE"/>
       <genEnumLiterals ecoreEnumLiteral="DungeonDSL.ecore#//Sizes/MEDIUM"/>
@@ -17,6 +21,10 @@
       <genEnumLiterals ecoreEnumLiteral="DungeonDSL.ecore#//RoomTypes/BOSS"/>
       <genEnumLiterals ecoreEnumLiteral="DungeonDSL.ecore#//RoomTypes/PUZZLE"/>
       <genEnumLiterals ecoreEnumLiteral="DungeonDSL.ecore#//RoomTypes/SHOP"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DungeonDSL.ecore#//EventTrigger">
+      <genEnumLiterals ecoreEnumLiteral="DungeonDSL.ecore#//EventTrigger/stepOn"/>
+      <genEnumLiterals ecoreEnumLiteral="DungeonDSL.ecore#//EventTrigger/openDoor"/>
     </genEnums>
     <genClasses ecoreClass="DungeonDSL.ecore#//Dungeon">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DungeonDSL.ecore#//Dungeon/name"/>
@@ -32,6 +40,15 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DungeonDSL.ecore#//Room/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DungeonDSL.ecore#//Room/size"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DungeonDSL.ecore#//Room/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DungeonDSL.ecore#//Room/floor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DungeonDSL.ecore#//Room/connections"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DungeonDSL.ecore#//Room/traps"/>
+    </genClasses>
+    <genClasses ecoreClass="DungeonDSL.ecore#//Trap">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DungeonDSL.ecore#//Trap/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DungeonDSL.ecore#//Trap/trigger"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DungeonDSL.ecore#//Trap/disarmable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DungeonDSL.ecore#//Trap/triggerChance"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

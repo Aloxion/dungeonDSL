@@ -51,6 +51,15 @@ public interface DungeonDSLFactory extends EFactory
   Room createRoom();
 
   /**
+   * Returns a new object of class '<em>Trap</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Trap</em>'.
+   * @generated
+   */
+  Trap createTrap();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

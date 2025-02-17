@@ -3,6 +3,8 @@
  */
 package org.dungeonDSL;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -17,6 +19,9 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.dungeonDSL.Room#getName <em>Name</em>}</li>
  *   <li>{@link org.dungeonDSL.Room#getSize <em>Size</em>}</li>
  *   <li>{@link org.dungeonDSL.Room#getType <em>Type</em>}</li>
+ *   <li>{@link org.dungeonDSL.Room#getFloor <em>Floor</em>}</li>
+ *   <li>{@link org.dungeonDSL.Room#getConnections <em>Connections</em>}</li>
+ *   <li>{@link org.dungeonDSL.Room#getTraps <em>Traps</em>}</li>
  * </ul>
  *
  * @see org.dungeonDSL.DungeonDSLPackage#getRoom()
@@ -96,5 +101,51 @@ public interface Room extends EObject
    * @generated
    */
   void setType(RoomTypes value);
+
+  /**
+   * Returns the value of the '<em><b>Floor</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Floor</em>' attribute.
+   * @see #setFloor(String)
+   * @see org.dungeonDSL.DungeonDSLPackage#getRoom_Floor()
+   * @model
+   * @generated
+   */
+  String getFloor();
+
+  /**
+   * Sets the value of the '{@link org.dungeonDSL.Room#getFloor <em>Floor</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Floor</em>' attribute.
+   * @see #getFloor()
+   * @generated
+   */
+  void setFloor(String value);
+
+  /**
+   * Returns the value of the '<em><b>Connections</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Connections</em>' attribute list.
+   * @see org.dungeonDSL.DungeonDSLPackage#getRoom_Connections()
+   * @model unique="false"
+   * @generated
+   */
+  EList<String> getConnections();
+
+  /**
+   * Returns the value of the '<em><b>Traps</b></em>' containment reference list.
+   * The list contents are of type {@link org.dungeonDSL.Trap}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Traps</em>' containment reference list.
+   * @see org.dungeonDSL.DungeonDSLPackage#getRoom_Traps()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Trap> getTraps();
 
 } // Room

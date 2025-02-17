@@ -4,25 +4,37 @@ generate dungeonDSL "http://www.DungeonDSL.org"
 
 
 Dungeon:
-    'Dungeon' name=ID '{'  
-        'theme' '=' theme=STRING  
-        'lvl' '=' lvl=INT  
-        
+    'Dungeon' name=ID '{'
+        'theme' '=' theme=STRING
+        'lvl' '=' lvl=INT
         (floors+=Floor)*
-    '}';  
-    
-Floor:
-    'Floor' name=ID '{'  
-		(rooms+=Room)*
-    '}'; 
+    '}';
 
-Room: 
+Floor:
+    'Floor' name=ID '{'
+		(rooms+=Room)*
+    '}';
+
+Room:
 	'Room' name=ID '{'
 		'size' '=' size=Sizes
 		'type' '=' type=RoomTypes
+		'floor' '=' floor=ID
+		'connections' "=" '[' connections+=ID (',' connections+=ID)* ']'
+		(traps+=Trap)*
 	'}'
 ;
-    
+
+Trap:
+    'Trap' name=ID '{'
+        'trigger' ':' trigger=EventTrigger
+        'disarmable' ':' disarmable=BOOLEAN
+        'triggerChance' ':' triggerChance=INT
+    '}';
+
+enum BOOLEAN:
+	true | false
+;
 
 enum Sizes:
 	LARGE | MEDIUM | SMALL
@@ -31,3 +43,7 @@ enum Sizes:
 enum RoomTypes:
 	COMBAT | TREASURE | BOSS | PUZZLE | SHOP
 ;
+
+enum EventTrigger:
+    stepOn |
+    openDoor;

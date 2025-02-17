@@ -91,6 +91,11 @@ public class DungeonDSLAdapterFactory extends AdapterFactoryImpl
         return createRoomAdapter();
       }
       @Override
+      public Adapter caseTrap(Trap object)
+      {
+        return createTrapAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -153,6 +158,21 @@ public class DungeonDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createRoomAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.dungeonDSL.Trap <em>Trap</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.dungeonDSL.Trap
+   * @generated
+   */
+  public Adapter createTrapAdapter()
   {
     return null;
   }

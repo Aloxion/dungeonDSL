@@ -9,6 +9,7 @@ import org.dungeonDSL.Dungeon;
 import org.dungeonDSL.DungeonDSLPackage;
 import org.dungeonDSL.Floor;
 import org.dungeonDSL.Room;
+import org.dungeonDSL.Trap;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.Action;
@@ -42,6 +43,9 @@ public class DungeonDSLSemanticSequencer extends AbstractDelegatingSemanticSeque
 				return; 
 			case DungeonDSLPackage.ROOM:
 				sequence_Room(context, (Room) semanticObject); 
+				return; 
+			case DungeonDSLPackage.TRAP:
+				sequence_Trap(context, (Trap) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -82,22 +86,47 @@ public class DungeonDSLSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     Room returns Room
 	 *
 	 * Constraint:
-	 *     (name=ID size=Sizes type=RoomTypes)
+	 *     (
+	 *         name=ID 
+	 *         size=Sizes 
+	 *         type=RoomTypes 
+	 *         floor=ID 
+	 *         connections+=ID 
+	 *         connections+=ID* 
+	 *         traps+=Trap*
+	 *     )
 	 * </pre>
 	 */
 	protected void sequence_Room(ISerializationContext context, Room semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Trap returns Trap
+	 *
+	 * Constraint:
+	 *     (name=ID trigger=EventTrigger disarmable=BOOLEAN triggerChance=INT)
+	 * </pre>
+	 */
+	protected void sequence_Trap(ISerializationContext context, Trap semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DungeonDSLPackage.Literals.ROOM__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DungeonDSLPackage.Literals.ROOM__NAME));
-			if (transientValues.isValueTransient(semanticObject, DungeonDSLPackage.Literals.ROOM__SIZE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DungeonDSLPackage.Literals.ROOM__SIZE));
-			if (transientValues.isValueTransient(semanticObject, DungeonDSLPackage.Literals.ROOM__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DungeonDSLPackage.Literals.ROOM__TYPE));
+			if (transientValues.isValueTransient(semanticObject, DungeonDSLPackage.Literals.TRAP__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DungeonDSLPackage.Literals.TRAP__NAME));
+			if (transientValues.isValueTransient(semanticObject, DungeonDSLPackage.Literals.TRAP__TRIGGER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DungeonDSLPackage.Literals.TRAP__TRIGGER));
+			if (transientValues.isValueTransient(semanticObject, DungeonDSLPackage.Literals.TRAP__DISARMABLE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DungeonDSLPackage.Literals.TRAP__DISARMABLE));
+			if (transientValues.isValueTransient(semanticObject, DungeonDSLPackage.Literals.TRAP__TRIGGER_CHANCE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DungeonDSLPackage.Literals.TRAP__TRIGGER_CHANCE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getRoomAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getRoomAccess().getSizeSizesEnumRuleCall_5_0(), semanticObject.getSize());
-		feeder.accept(grammarAccess.getRoomAccess().getTypeRoomTypesEnumRuleCall_8_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getTrapAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getTrapAccess().getTriggerEventTriggerEnumRuleCall_5_0(), semanticObject.getTrigger());
+		feeder.accept(grammarAccess.getTrapAccess().getDisarmableBOOLEANEnumRuleCall_8_0(), semanticObject.getDisarmable());
+		feeder.accept(grammarAccess.getTrapAccess().getTriggerChanceINTTerminalRuleCall_11_0(), semanticObject.getTriggerChance());
 		feeder.finish();
 	}
 	

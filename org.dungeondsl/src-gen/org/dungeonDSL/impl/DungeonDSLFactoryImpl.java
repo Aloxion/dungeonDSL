@@ -69,6 +69,7 @@ public class DungeonDSLFactoryImpl extends EFactoryImpl implements DungeonDSLFac
       case DungeonDSLPackage.DUNGEON: return createDungeon();
       case DungeonDSLPackage.FLOOR: return createFloor();
       case DungeonDSLPackage.ROOM: return createRoom();
+      case DungeonDSLPackage.TRAP: return createTrap();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -84,10 +85,14 @@ public class DungeonDSLFactoryImpl extends EFactoryImpl implements DungeonDSLFac
   {
     switch (eDataType.getClassifierID())
     {
+      case DungeonDSLPackage.BOOLEAN:
+        return createBOOLEANFromString(eDataType, initialValue);
       case DungeonDSLPackage.SIZES:
         return createSizesFromString(eDataType, initialValue);
       case DungeonDSLPackage.ROOM_TYPES:
         return createRoomTypesFromString(eDataType, initialValue);
+      case DungeonDSLPackage.EVENT_TRIGGER:
+        return createEventTriggerFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -103,10 +108,14 @@ public class DungeonDSLFactoryImpl extends EFactoryImpl implements DungeonDSLFac
   {
     switch (eDataType.getClassifierID())
     {
+      case DungeonDSLPackage.BOOLEAN:
+        return convertBOOLEANToString(eDataType, instanceValue);
       case DungeonDSLPackage.SIZES:
         return convertSizesToString(eDataType, instanceValue);
       case DungeonDSLPackage.ROOM_TYPES:
         return convertRoomTypesToString(eDataType, instanceValue);
+      case DungeonDSLPackage.EVENT_TRIGGER:
+        return convertEventTriggerToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -153,6 +162,40 @@ public class DungeonDSLFactoryImpl extends EFactoryImpl implements DungeonDSLFac
    * <!-- end-user-doc -->
    * @generated
    */
+  @Override
+  public Trap createTrap()
+  {
+    TrapImpl trap = new TrapImpl();
+    return trap;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BOOLEAN createBOOLEANFromString(EDataType eDataType, String initialValue)
+  {
+    BOOLEAN result = BOOLEAN.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertBOOLEANToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Sizes createSizesFromString(EDataType eDataType, String initialValue)
   {
     Sizes result = Sizes.get(initialValue);
@@ -188,6 +231,28 @@ public class DungeonDSLFactoryImpl extends EFactoryImpl implements DungeonDSLFac
    * @generated
    */
   public String convertRoomTypesToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EventTrigger createEventTriggerFromString(EDataType eDataType, String initialValue)
+  {
+    EventTrigger result = EventTrigger.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertEventTriggerToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

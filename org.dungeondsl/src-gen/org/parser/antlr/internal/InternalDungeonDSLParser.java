@@ -22,20 +22,30 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalDungeonDSLParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Dungeon'", "'{'", "'theme'", "'='", "'lvl'", "'}'", "'Floor'", "'Room'", "'size'", "'type'", "'LARGE'", "'MEDIUM'", "'SMALL'", "'COMBAT'", "'TREASURE'", "'BOSS'", "'PUZZLE'", "'SHOP'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Dungeon'", "'{'", "'theme'", "'='", "'lvl'", "'}'", "'Floor'", "'Room'", "'size'", "'type'", "'floor'", "'connections'", "'['", "','", "']'", "'Trap'", "'trigger'", "':'", "'disarmable'", "'triggerChance'", "'true'", "'false'", "'LARGE'", "'MEDIUM'", "'SMALL'", "'COMBAT'", "'TREASURE'", "'BOSS'", "'PUZZLE'", "'SHOP'", "'stepOn'", "'openDoor'"
     };
     public static final int RULE_STRING=5;
     public static final int RULE_SL_COMMENT=8;
     public static final int T__19=19;
     public static final int T__15=15;
+    public static final int T__37=37;
     public static final int T__16=16;
+    public static final int T__38=38;
     public static final int T__17=17;
+    public static final int T__39=39;
     public static final int T__18=18;
     public static final int T__11=11;
+    public static final int T__33=33;
     public static final int T__12=12;
+    public static final int T__34=34;
     public static final int T__13=13;
+    public static final int T__35=35;
     public static final int T__14=14;
+    public static final int T__36=36;
     public static final int EOF=-1;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int T__32=32;
     public static final int RULE_ID=4;
     public static final int RULE_WS=9;
     public static final int RULE_ANY_OTHER=10;
@@ -43,12 +53,16 @@ public class InternalDungeonDSLParser extends AbstractInternalAntlrParser {
     public static final int T__27=27;
     public static final int T__28=28;
     public static final int RULE_INT=6;
+    public static final int T__29=29;
     public static final int T__22=22;
     public static final int RULE_ML_COMMENT=7;
     public static final int T__23=23;
     public static final int T__24=24;
     public static final int T__25=25;
+    public static final int T__40=40;
+    public static final int T__41=41;
     public static final int T__20=20;
+    public static final int T__42=42;
     public static final int T__21=21;
 
     // delegates
@@ -535,7 +549,7 @@ public class InternalDungeonDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRoom"
-    // InternalDungeonDSL.g:260:1: ruleRoom returns [EObject current=null] : (otherlv_0= 'Room' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'size' otherlv_4= '=' ( (lv_size_5_0= ruleSizes ) ) otherlv_6= 'type' otherlv_7= '=' ( (lv_type_8_0= ruleRoomTypes ) ) otherlv_9= '}' ) ;
+    // InternalDungeonDSL.g:260:1: ruleRoom returns [EObject current=null] : (otherlv_0= 'Room' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'size' otherlv_4= '=' ( (lv_size_5_0= ruleSizes ) ) otherlv_6= 'type' otherlv_7= '=' ( (lv_type_8_0= ruleRoomTypes ) ) otherlv_9= 'floor' otherlv_10= '=' ( (lv_floor_11_0= RULE_ID ) ) otherlv_12= 'connections' otherlv_13= '=' otherlv_14= '[' ( (lv_connections_15_0= RULE_ID ) ) (otherlv_16= ',' ( (lv_connections_17_0= RULE_ID ) ) )* otherlv_18= ']' ( (lv_traps_19_0= ruleTrap ) )* otherlv_20= '}' ) ;
     public final EObject ruleRoom() throws RecognitionException {
         EObject current = null;
 
@@ -547,20 +561,32 @@ public class InternalDungeonDSLParser extends AbstractInternalAntlrParser {
         Token otherlv_6=null;
         Token otherlv_7=null;
         Token otherlv_9=null;
+        Token otherlv_10=null;
+        Token lv_floor_11_0=null;
+        Token otherlv_12=null;
+        Token otherlv_13=null;
+        Token otherlv_14=null;
+        Token lv_connections_15_0=null;
+        Token otherlv_16=null;
+        Token lv_connections_17_0=null;
+        Token otherlv_18=null;
+        Token otherlv_20=null;
         Enumerator lv_size_5_0 = null;
 
         Enumerator lv_type_8_0 = null;
+
+        EObject lv_traps_19_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalDungeonDSL.g:266:2: ( (otherlv_0= 'Room' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'size' otherlv_4= '=' ( (lv_size_5_0= ruleSizes ) ) otherlv_6= 'type' otherlv_7= '=' ( (lv_type_8_0= ruleRoomTypes ) ) otherlv_9= '}' ) )
-            // InternalDungeonDSL.g:267:2: (otherlv_0= 'Room' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'size' otherlv_4= '=' ( (lv_size_5_0= ruleSizes ) ) otherlv_6= 'type' otherlv_7= '=' ( (lv_type_8_0= ruleRoomTypes ) ) otherlv_9= '}' )
+            // InternalDungeonDSL.g:266:2: ( (otherlv_0= 'Room' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'size' otherlv_4= '=' ( (lv_size_5_0= ruleSizes ) ) otherlv_6= 'type' otherlv_7= '=' ( (lv_type_8_0= ruleRoomTypes ) ) otherlv_9= 'floor' otherlv_10= '=' ( (lv_floor_11_0= RULE_ID ) ) otherlv_12= 'connections' otherlv_13= '=' otherlv_14= '[' ( (lv_connections_15_0= RULE_ID ) ) (otherlv_16= ',' ( (lv_connections_17_0= RULE_ID ) ) )* otherlv_18= ']' ( (lv_traps_19_0= ruleTrap ) )* otherlv_20= '}' ) )
+            // InternalDungeonDSL.g:267:2: (otherlv_0= 'Room' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'size' otherlv_4= '=' ( (lv_size_5_0= ruleSizes ) ) otherlv_6= 'type' otherlv_7= '=' ( (lv_type_8_0= ruleRoomTypes ) ) otherlv_9= 'floor' otherlv_10= '=' ( (lv_floor_11_0= RULE_ID ) ) otherlv_12= 'connections' otherlv_13= '=' otherlv_14= '[' ( (lv_connections_15_0= RULE_ID ) ) (otherlv_16= ',' ( (lv_connections_17_0= RULE_ID ) ) )* otherlv_18= ']' ( (lv_traps_19_0= ruleTrap ) )* otherlv_20= '}' )
             {
-            // InternalDungeonDSL.g:267:2: (otherlv_0= 'Room' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'size' otherlv_4= '=' ( (lv_size_5_0= ruleSizes ) ) otherlv_6= 'type' otherlv_7= '=' ( (lv_type_8_0= ruleRoomTypes ) ) otherlv_9= '}' )
-            // InternalDungeonDSL.g:268:3: otherlv_0= 'Room' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'size' otherlv_4= '=' ( (lv_size_5_0= ruleSizes ) ) otherlv_6= 'type' otherlv_7= '=' ( (lv_type_8_0= ruleRoomTypes ) ) otherlv_9= '}'
+            // InternalDungeonDSL.g:267:2: (otherlv_0= 'Room' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'size' otherlv_4= '=' ( (lv_size_5_0= ruleSizes ) ) otherlv_6= 'type' otherlv_7= '=' ( (lv_type_8_0= ruleRoomTypes ) ) otherlv_9= 'floor' otherlv_10= '=' ( (lv_floor_11_0= RULE_ID ) ) otherlv_12= 'connections' otherlv_13= '=' otherlv_14= '[' ( (lv_connections_15_0= RULE_ID ) ) (otherlv_16= ',' ( (lv_connections_17_0= RULE_ID ) ) )* otherlv_18= ']' ( (lv_traps_19_0= ruleTrap ) )* otherlv_20= '}' )
+            // InternalDungeonDSL.g:268:3: otherlv_0= 'Room' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'size' otherlv_4= '=' ( (lv_size_5_0= ruleSizes ) ) otherlv_6= 'type' otherlv_7= '=' ( (lv_type_8_0= ruleRoomTypes ) ) otherlv_9= 'floor' otherlv_10= '=' ( (lv_floor_11_0= RULE_ID ) ) otherlv_12= 'connections' otherlv_13= '=' otherlv_14= '[' ( (lv_connections_15_0= RULE_ID ) ) (otherlv_16= ',' ( (lv_connections_17_0= RULE_ID ) ) )* otherlv_18= ']' ( (lv_traps_19_0= ruleTrap ) )* otherlv_20= '}'
             {
             otherlv_0=(Token)match(input,18,FOLLOW_3); 
 
@@ -674,9 +700,188 @@ public class InternalDungeonDSLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_9=(Token)match(input,16,FOLLOW_2); 
+            otherlv_9=(Token)match(input,21,FOLLOW_6); 
 
-            			newLeafNode(otherlv_9, grammarAccess.getRoomAccess().getRightCurlyBracketKeyword_9());
+            			newLeafNode(otherlv_9, grammarAccess.getRoomAccess().getFloorKeyword_9());
+            		
+            otherlv_10=(Token)match(input,14,FOLLOW_3); 
+
+            			newLeafNode(otherlv_10, grammarAccess.getRoomAccess().getEqualsSignKeyword_10());
+            		
+            // InternalDungeonDSL.g:356:3: ( (lv_floor_11_0= RULE_ID ) )
+            // InternalDungeonDSL.g:357:4: (lv_floor_11_0= RULE_ID )
+            {
+            // InternalDungeonDSL.g:357:4: (lv_floor_11_0= RULE_ID )
+            // InternalDungeonDSL.g:358:5: lv_floor_11_0= RULE_ID
+            {
+            lv_floor_11_0=(Token)match(input,RULE_ID,FOLLOW_17); 
+
+            					newLeafNode(lv_floor_11_0, grammarAccess.getRoomAccess().getFloorIDTerminalRuleCall_11_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getRoomRule());
+            					}
+            					setWithLastConsumed(
+            						current,
+            						"floor",
+            						lv_floor_11_0,
+            						"org.eclipse.xtext.common.Terminals.ID");
+            				
+
+            }
+
+
+            }
+
+            otherlv_12=(Token)match(input,22,FOLLOW_6); 
+
+            			newLeafNode(otherlv_12, grammarAccess.getRoomAccess().getConnectionsKeyword_12());
+            		
+            otherlv_13=(Token)match(input,14,FOLLOW_18); 
+
+            			newLeafNode(otherlv_13, grammarAccess.getRoomAccess().getEqualsSignKeyword_13());
+            		
+            otherlv_14=(Token)match(input,23,FOLLOW_3); 
+
+            			newLeafNode(otherlv_14, grammarAccess.getRoomAccess().getLeftSquareBracketKeyword_14());
+            		
+            // InternalDungeonDSL.g:386:3: ( (lv_connections_15_0= RULE_ID ) )
+            // InternalDungeonDSL.g:387:4: (lv_connections_15_0= RULE_ID )
+            {
+            // InternalDungeonDSL.g:387:4: (lv_connections_15_0= RULE_ID )
+            // InternalDungeonDSL.g:388:5: lv_connections_15_0= RULE_ID
+            {
+            lv_connections_15_0=(Token)match(input,RULE_ID,FOLLOW_19); 
+
+            					newLeafNode(lv_connections_15_0, grammarAccess.getRoomAccess().getConnectionsIDTerminalRuleCall_15_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getRoomRule());
+            					}
+            					addWithLastConsumed(
+            						current,
+            						"connections",
+            						lv_connections_15_0,
+            						"org.eclipse.xtext.common.Terminals.ID");
+            				
+
+            }
+
+
+            }
+
+            // InternalDungeonDSL.g:404:3: (otherlv_16= ',' ( (lv_connections_17_0= RULE_ID ) ) )*
+            loop3:
+            do {
+                int alt3=2;
+                int LA3_0 = input.LA(1);
+
+                if ( (LA3_0==24) ) {
+                    alt3=1;
+                }
+
+
+                switch (alt3) {
+            	case 1 :
+            	    // InternalDungeonDSL.g:405:4: otherlv_16= ',' ( (lv_connections_17_0= RULE_ID ) )
+            	    {
+            	    otherlv_16=(Token)match(input,24,FOLLOW_3); 
+
+            	    				newLeafNode(otherlv_16, grammarAccess.getRoomAccess().getCommaKeyword_16_0());
+            	    			
+            	    // InternalDungeonDSL.g:409:4: ( (lv_connections_17_0= RULE_ID ) )
+            	    // InternalDungeonDSL.g:410:5: (lv_connections_17_0= RULE_ID )
+            	    {
+            	    // InternalDungeonDSL.g:410:5: (lv_connections_17_0= RULE_ID )
+            	    // InternalDungeonDSL.g:411:6: lv_connections_17_0= RULE_ID
+            	    {
+            	    lv_connections_17_0=(Token)match(input,RULE_ID,FOLLOW_19); 
+
+            	    						newLeafNode(lv_connections_17_0, grammarAccess.getRoomAccess().getConnectionsIDTerminalRuleCall_16_1_0());
+            	    					
+
+            	    						if (current==null) {
+            	    							current = createModelElement(grammarAccess.getRoomRule());
+            	    						}
+            	    						addWithLastConsumed(
+            	    							current,
+            	    							"connections",
+            	    							lv_connections_17_0,
+            	    							"org.eclipse.xtext.common.Terminals.ID");
+            	    					
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop3;
+                }
+            } while (true);
+
+            otherlv_18=(Token)match(input,25,FOLLOW_20); 
+
+            			newLeafNode(otherlv_18, grammarAccess.getRoomAccess().getRightSquareBracketKeyword_17());
+            		
+            // InternalDungeonDSL.g:432:3: ( (lv_traps_19_0= ruleTrap ) )*
+            loop4:
+            do {
+                int alt4=2;
+                int LA4_0 = input.LA(1);
+
+                if ( (LA4_0==26) ) {
+                    alt4=1;
+                }
+
+
+                switch (alt4) {
+            	case 1 :
+            	    // InternalDungeonDSL.g:433:4: (lv_traps_19_0= ruleTrap )
+            	    {
+            	    // InternalDungeonDSL.g:433:4: (lv_traps_19_0= ruleTrap )
+            	    // InternalDungeonDSL.g:434:5: lv_traps_19_0= ruleTrap
+            	    {
+
+            	    					newCompositeNode(grammarAccess.getRoomAccess().getTrapsTrapParserRuleCall_18_0());
+            	    				
+            	    pushFollow(FOLLOW_20);
+            	    lv_traps_19_0=ruleTrap();
+
+            	    state._fsp--;
+
+
+            	    					if (current==null) {
+            	    						current = createModelElementForParent(grammarAccess.getRoomRule());
+            	    					}
+            	    					add(
+            	    						current,
+            	    						"traps",
+            	    						lv_traps_19_0,
+            	    						"org.DungeonDSL.Trap");
+            	    					afterParserOrEnumRuleCall();
+            	    				
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop4;
+                }
+            } while (true);
+
+            otherlv_20=(Token)match(input,16,FOLLOW_2); 
+
+            			newLeafNode(otherlv_20, grammarAccess.getRoomAccess().getRightCurlyBracketKeyword_19());
             		
 
             }
@@ -700,8 +905,335 @@ public class InternalDungeonDSLParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleRoom"
 
 
+    // $ANTLR start "entryRuleTrap"
+    // InternalDungeonDSL.g:459:1: entryRuleTrap returns [EObject current=null] : iv_ruleTrap= ruleTrap EOF ;
+    public final EObject entryRuleTrap() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleTrap = null;
+
+
+        try {
+            // InternalDungeonDSL.g:459:45: (iv_ruleTrap= ruleTrap EOF )
+            // InternalDungeonDSL.g:460:2: iv_ruleTrap= ruleTrap EOF
+            {
+             newCompositeNode(grammarAccess.getTrapRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleTrap=ruleTrap();
+
+            state._fsp--;
+
+             current =iv_ruleTrap; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleTrap"
+
+
+    // $ANTLR start "ruleTrap"
+    // InternalDungeonDSL.g:466:1: ruleTrap returns [EObject current=null] : (otherlv_0= 'Trap' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'trigger' otherlv_4= ':' ( (lv_trigger_5_0= ruleEventTrigger ) ) otherlv_6= 'disarmable' otherlv_7= ':' ( (lv_disarmable_8_0= ruleBOOLEAN ) ) otherlv_9= 'triggerChance' otherlv_10= ':' ( (lv_triggerChance_11_0= RULE_INT ) ) otherlv_12= '}' ) ;
+    public final EObject ruleTrap() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token lv_name_1_0=null;
+        Token otherlv_2=null;
+        Token otherlv_3=null;
+        Token otherlv_4=null;
+        Token otherlv_6=null;
+        Token otherlv_7=null;
+        Token otherlv_9=null;
+        Token otherlv_10=null;
+        Token lv_triggerChance_11_0=null;
+        Token otherlv_12=null;
+        Enumerator lv_trigger_5_0 = null;
+
+        Enumerator lv_disarmable_8_0 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalDungeonDSL.g:472:2: ( (otherlv_0= 'Trap' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'trigger' otherlv_4= ':' ( (lv_trigger_5_0= ruleEventTrigger ) ) otherlv_6= 'disarmable' otherlv_7= ':' ( (lv_disarmable_8_0= ruleBOOLEAN ) ) otherlv_9= 'triggerChance' otherlv_10= ':' ( (lv_triggerChance_11_0= RULE_INT ) ) otherlv_12= '}' ) )
+            // InternalDungeonDSL.g:473:2: (otherlv_0= 'Trap' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'trigger' otherlv_4= ':' ( (lv_trigger_5_0= ruleEventTrigger ) ) otherlv_6= 'disarmable' otherlv_7= ':' ( (lv_disarmable_8_0= ruleBOOLEAN ) ) otherlv_9= 'triggerChance' otherlv_10= ':' ( (lv_triggerChance_11_0= RULE_INT ) ) otherlv_12= '}' )
+            {
+            // InternalDungeonDSL.g:473:2: (otherlv_0= 'Trap' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'trigger' otherlv_4= ':' ( (lv_trigger_5_0= ruleEventTrigger ) ) otherlv_6= 'disarmable' otherlv_7= ':' ( (lv_disarmable_8_0= ruleBOOLEAN ) ) otherlv_9= 'triggerChance' otherlv_10= ':' ( (lv_triggerChance_11_0= RULE_INT ) ) otherlv_12= '}' )
+            // InternalDungeonDSL.g:474:3: otherlv_0= 'Trap' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'trigger' otherlv_4= ':' ( (lv_trigger_5_0= ruleEventTrigger ) ) otherlv_6= 'disarmable' otherlv_7= ':' ( (lv_disarmable_8_0= ruleBOOLEAN ) ) otherlv_9= 'triggerChance' otherlv_10= ':' ( (lv_triggerChance_11_0= RULE_INT ) ) otherlv_12= '}'
+            {
+            otherlv_0=(Token)match(input,26,FOLLOW_3); 
+
+            			newLeafNode(otherlv_0, grammarAccess.getTrapAccess().getTrapKeyword_0());
+            		
+            // InternalDungeonDSL.g:478:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalDungeonDSL.g:479:4: (lv_name_1_0= RULE_ID )
+            {
+            // InternalDungeonDSL.g:479:4: (lv_name_1_0= RULE_ID )
+            // InternalDungeonDSL.g:480:5: lv_name_1_0= RULE_ID
+            {
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_4); 
+
+            					newLeafNode(lv_name_1_0, grammarAccess.getTrapAccess().getNameIDTerminalRuleCall_1_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getTrapRule());
+            					}
+            					setWithLastConsumed(
+            						current,
+            						"name",
+            						lv_name_1_0,
+            						"org.eclipse.xtext.common.Terminals.ID");
+            				
+
+            }
+
+
+            }
+
+            otherlv_2=(Token)match(input,12,FOLLOW_21); 
+
+            			newLeafNode(otherlv_2, grammarAccess.getTrapAccess().getLeftCurlyBracketKeyword_2());
+            		
+            otherlv_3=(Token)match(input,27,FOLLOW_22); 
+
+            			newLeafNode(otherlv_3, grammarAccess.getTrapAccess().getTriggerKeyword_3());
+            		
+            otherlv_4=(Token)match(input,28,FOLLOW_23); 
+
+            			newLeafNode(otherlv_4, grammarAccess.getTrapAccess().getColonKeyword_4());
+            		
+            // InternalDungeonDSL.g:508:3: ( (lv_trigger_5_0= ruleEventTrigger ) )
+            // InternalDungeonDSL.g:509:4: (lv_trigger_5_0= ruleEventTrigger )
+            {
+            // InternalDungeonDSL.g:509:4: (lv_trigger_5_0= ruleEventTrigger )
+            // InternalDungeonDSL.g:510:5: lv_trigger_5_0= ruleEventTrigger
+            {
+
+            					newCompositeNode(grammarAccess.getTrapAccess().getTriggerEventTriggerEnumRuleCall_5_0());
+            				
+            pushFollow(FOLLOW_24);
+            lv_trigger_5_0=ruleEventTrigger();
+
+            state._fsp--;
+
+
+            					if (current==null) {
+            						current = createModelElementForParent(grammarAccess.getTrapRule());
+            					}
+            					set(
+            						current,
+            						"trigger",
+            						lv_trigger_5_0,
+            						"org.DungeonDSL.EventTrigger");
+            					afterParserOrEnumRuleCall();
+            				
+
+            }
+
+
+            }
+
+            otherlv_6=(Token)match(input,29,FOLLOW_22); 
+
+            			newLeafNode(otherlv_6, grammarAccess.getTrapAccess().getDisarmableKeyword_6());
+            		
+            otherlv_7=(Token)match(input,28,FOLLOW_25); 
+
+            			newLeafNode(otherlv_7, grammarAccess.getTrapAccess().getColonKeyword_7());
+            		
+            // InternalDungeonDSL.g:535:3: ( (lv_disarmable_8_0= ruleBOOLEAN ) )
+            // InternalDungeonDSL.g:536:4: (lv_disarmable_8_0= ruleBOOLEAN )
+            {
+            // InternalDungeonDSL.g:536:4: (lv_disarmable_8_0= ruleBOOLEAN )
+            // InternalDungeonDSL.g:537:5: lv_disarmable_8_0= ruleBOOLEAN
+            {
+
+            					newCompositeNode(grammarAccess.getTrapAccess().getDisarmableBOOLEANEnumRuleCall_8_0());
+            				
+            pushFollow(FOLLOW_26);
+            lv_disarmable_8_0=ruleBOOLEAN();
+
+            state._fsp--;
+
+
+            					if (current==null) {
+            						current = createModelElementForParent(grammarAccess.getTrapRule());
+            					}
+            					set(
+            						current,
+            						"disarmable",
+            						lv_disarmable_8_0,
+            						"org.DungeonDSL.BOOLEAN");
+            					afterParserOrEnumRuleCall();
+            				
+
+            }
+
+
+            }
+
+            otherlv_9=(Token)match(input,30,FOLLOW_22); 
+
+            			newLeafNode(otherlv_9, grammarAccess.getTrapAccess().getTriggerChanceKeyword_9());
+            		
+            otherlv_10=(Token)match(input,28,FOLLOW_9); 
+
+            			newLeafNode(otherlv_10, grammarAccess.getTrapAccess().getColonKeyword_10());
+            		
+            // InternalDungeonDSL.g:562:3: ( (lv_triggerChance_11_0= RULE_INT ) )
+            // InternalDungeonDSL.g:563:4: (lv_triggerChance_11_0= RULE_INT )
+            {
+            // InternalDungeonDSL.g:563:4: (lv_triggerChance_11_0= RULE_INT )
+            // InternalDungeonDSL.g:564:5: lv_triggerChance_11_0= RULE_INT
+            {
+            lv_triggerChance_11_0=(Token)match(input,RULE_INT,FOLLOW_27); 
+
+            					newLeafNode(lv_triggerChance_11_0, grammarAccess.getTrapAccess().getTriggerChanceINTTerminalRuleCall_11_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getTrapRule());
+            					}
+            					setWithLastConsumed(
+            						current,
+            						"triggerChance",
+            						lv_triggerChance_11_0,
+            						"org.eclipse.xtext.common.Terminals.INT");
+            				
+
+            }
+
+
+            }
+
+            otherlv_12=(Token)match(input,16,FOLLOW_2); 
+
+            			newLeafNode(otherlv_12, grammarAccess.getTrapAccess().getRightCurlyBracketKeyword_12());
+            		
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleTrap"
+
+
+    // $ANTLR start "ruleBOOLEAN"
+    // InternalDungeonDSL.g:588:1: ruleBOOLEAN returns [Enumerator current=null] : ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) ) ;
+    public final Enumerator ruleBOOLEAN() throws RecognitionException {
+        Enumerator current = null;
+
+        Token enumLiteral_0=null;
+        Token enumLiteral_1=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalDungeonDSL.g:594:2: ( ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) ) )
+            // InternalDungeonDSL.g:595:2: ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) )
+            {
+            // InternalDungeonDSL.g:595:2: ( (enumLiteral_0= 'true' ) | (enumLiteral_1= 'false' ) )
+            int alt5=2;
+            int LA5_0 = input.LA(1);
+
+            if ( (LA5_0==31) ) {
+                alt5=1;
+            }
+            else if ( (LA5_0==32) ) {
+                alt5=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 5, 0, input);
+
+                throw nvae;
+            }
+            switch (alt5) {
+                case 1 :
+                    // InternalDungeonDSL.g:596:3: (enumLiteral_0= 'true' )
+                    {
+                    // InternalDungeonDSL.g:596:3: (enumLiteral_0= 'true' )
+                    // InternalDungeonDSL.g:597:4: enumLiteral_0= 'true'
+                    {
+                    enumLiteral_0=(Token)match(input,31,FOLLOW_2); 
+
+                    				current = grammarAccess.getBOOLEANAccess().getTrueEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_0, grammarAccess.getBOOLEANAccess().getTrueEnumLiteralDeclaration_0());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDungeonDSL.g:604:3: (enumLiteral_1= 'false' )
+                    {
+                    // InternalDungeonDSL.g:604:3: (enumLiteral_1= 'false' )
+                    // InternalDungeonDSL.g:605:4: enumLiteral_1= 'false'
+                    {
+                    enumLiteral_1=(Token)match(input,32,FOLLOW_2); 
+
+                    				current = grammarAccess.getBOOLEANAccess().getFalseEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_1, grammarAccess.getBOOLEANAccess().getFalseEnumLiteralDeclaration_1());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleBOOLEAN"
+
+
     // $ANTLR start "ruleSizes"
-    // InternalDungeonDSL.g:356:1: ruleSizes returns [Enumerator current=null] : ( (enumLiteral_0= 'LARGE' ) | (enumLiteral_1= 'MEDIUM' ) | (enumLiteral_2= 'SMALL' ) ) ;
+    // InternalDungeonDSL.g:615:1: ruleSizes returns [Enumerator current=null] : ( (enumLiteral_0= 'LARGE' ) | (enumLiteral_1= 'MEDIUM' ) | (enumLiteral_2= 'SMALL' ) ) ;
     public final Enumerator ruleSizes() throws RecognitionException {
         Enumerator current = null;
 
@@ -713,42 +1245,42 @@ public class InternalDungeonDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDungeonDSL.g:362:2: ( ( (enumLiteral_0= 'LARGE' ) | (enumLiteral_1= 'MEDIUM' ) | (enumLiteral_2= 'SMALL' ) ) )
-            // InternalDungeonDSL.g:363:2: ( (enumLiteral_0= 'LARGE' ) | (enumLiteral_1= 'MEDIUM' ) | (enumLiteral_2= 'SMALL' ) )
+            // InternalDungeonDSL.g:621:2: ( ( (enumLiteral_0= 'LARGE' ) | (enumLiteral_1= 'MEDIUM' ) | (enumLiteral_2= 'SMALL' ) ) )
+            // InternalDungeonDSL.g:622:2: ( (enumLiteral_0= 'LARGE' ) | (enumLiteral_1= 'MEDIUM' ) | (enumLiteral_2= 'SMALL' ) )
             {
-            // InternalDungeonDSL.g:363:2: ( (enumLiteral_0= 'LARGE' ) | (enumLiteral_1= 'MEDIUM' ) | (enumLiteral_2= 'SMALL' ) )
-            int alt3=3;
+            // InternalDungeonDSL.g:622:2: ( (enumLiteral_0= 'LARGE' ) | (enumLiteral_1= 'MEDIUM' ) | (enumLiteral_2= 'SMALL' ) )
+            int alt6=3;
             switch ( input.LA(1) ) {
-            case 21:
+            case 33:
                 {
-                alt3=1;
+                alt6=1;
                 }
                 break;
-            case 22:
+            case 34:
                 {
-                alt3=2;
+                alt6=2;
                 }
                 break;
-            case 23:
+            case 35:
                 {
-                alt3=3;
+                alt6=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 3, 0, input);
+                    new NoViableAltException("", 6, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt3) {
+            switch (alt6) {
                 case 1 :
-                    // InternalDungeonDSL.g:364:3: (enumLiteral_0= 'LARGE' )
+                    // InternalDungeonDSL.g:623:3: (enumLiteral_0= 'LARGE' )
                     {
-                    // InternalDungeonDSL.g:364:3: (enumLiteral_0= 'LARGE' )
-                    // InternalDungeonDSL.g:365:4: enumLiteral_0= 'LARGE'
+                    // InternalDungeonDSL.g:623:3: (enumLiteral_0= 'LARGE' )
+                    // InternalDungeonDSL.g:624:4: enumLiteral_0= 'LARGE'
                     {
-                    enumLiteral_0=(Token)match(input,21,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,33,FOLLOW_2); 
 
                     				current = grammarAccess.getSizesAccess().getLARGEEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getSizesAccess().getLARGEEnumLiteralDeclaration_0());
@@ -760,12 +1292,12 @@ public class InternalDungeonDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalDungeonDSL.g:372:3: (enumLiteral_1= 'MEDIUM' )
+                    // InternalDungeonDSL.g:631:3: (enumLiteral_1= 'MEDIUM' )
                     {
-                    // InternalDungeonDSL.g:372:3: (enumLiteral_1= 'MEDIUM' )
-                    // InternalDungeonDSL.g:373:4: enumLiteral_1= 'MEDIUM'
+                    // InternalDungeonDSL.g:631:3: (enumLiteral_1= 'MEDIUM' )
+                    // InternalDungeonDSL.g:632:4: enumLiteral_1= 'MEDIUM'
                     {
-                    enumLiteral_1=(Token)match(input,22,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,34,FOLLOW_2); 
 
                     				current = grammarAccess.getSizesAccess().getMEDIUMEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getSizesAccess().getMEDIUMEnumLiteralDeclaration_1());
@@ -777,12 +1309,12 @@ public class InternalDungeonDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalDungeonDSL.g:380:3: (enumLiteral_2= 'SMALL' )
+                    // InternalDungeonDSL.g:639:3: (enumLiteral_2= 'SMALL' )
                     {
-                    // InternalDungeonDSL.g:380:3: (enumLiteral_2= 'SMALL' )
-                    // InternalDungeonDSL.g:381:4: enumLiteral_2= 'SMALL'
+                    // InternalDungeonDSL.g:639:3: (enumLiteral_2= 'SMALL' )
+                    // InternalDungeonDSL.g:640:4: enumLiteral_2= 'SMALL'
                     {
-                    enumLiteral_2=(Token)match(input,23,FOLLOW_2); 
+                    enumLiteral_2=(Token)match(input,35,FOLLOW_2); 
 
                     				current = grammarAccess.getSizesAccess().getSMALLEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_2, grammarAccess.getSizesAccess().getSMALLEnumLiteralDeclaration_2());
@@ -816,7 +1348,7 @@ public class InternalDungeonDSLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRoomTypes"
-    // InternalDungeonDSL.g:391:1: ruleRoomTypes returns [Enumerator current=null] : ( (enumLiteral_0= 'COMBAT' ) | (enumLiteral_1= 'TREASURE' ) | (enumLiteral_2= 'BOSS' ) | (enumLiteral_3= 'PUZZLE' ) | (enumLiteral_4= 'SHOP' ) ) ;
+    // InternalDungeonDSL.g:650:1: ruleRoomTypes returns [Enumerator current=null] : ( (enumLiteral_0= 'COMBAT' ) | (enumLiteral_1= 'TREASURE' ) | (enumLiteral_2= 'BOSS' ) | (enumLiteral_3= 'PUZZLE' ) | (enumLiteral_4= 'SHOP' ) ) ;
     public final Enumerator ruleRoomTypes() throws RecognitionException {
         Enumerator current = null;
 
@@ -830,52 +1362,52 @@ public class InternalDungeonDSLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDungeonDSL.g:397:2: ( ( (enumLiteral_0= 'COMBAT' ) | (enumLiteral_1= 'TREASURE' ) | (enumLiteral_2= 'BOSS' ) | (enumLiteral_3= 'PUZZLE' ) | (enumLiteral_4= 'SHOP' ) ) )
-            // InternalDungeonDSL.g:398:2: ( (enumLiteral_0= 'COMBAT' ) | (enumLiteral_1= 'TREASURE' ) | (enumLiteral_2= 'BOSS' ) | (enumLiteral_3= 'PUZZLE' ) | (enumLiteral_4= 'SHOP' ) )
+            // InternalDungeonDSL.g:656:2: ( ( (enumLiteral_0= 'COMBAT' ) | (enumLiteral_1= 'TREASURE' ) | (enumLiteral_2= 'BOSS' ) | (enumLiteral_3= 'PUZZLE' ) | (enumLiteral_4= 'SHOP' ) ) )
+            // InternalDungeonDSL.g:657:2: ( (enumLiteral_0= 'COMBAT' ) | (enumLiteral_1= 'TREASURE' ) | (enumLiteral_2= 'BOSS' ) | (enumLiteral_3= 'PUZZLE' ) | (enumLiteral_4= 'SHOP' ) )
             {
-            // InternalDungeonDSL.g:398:2: ( (enumLiteral_0= 'COMBAT' ) | (enumLiteral_1= 'TREASURE' ) | (enumLiteral_2= 'BOSS' ) | (enumLiteral_3= 'PUZZLE' ) | (enumLiteral_4= 'SHOP' ) )
-            int alt4=5;
+            // InternalDungeonDSL.g:657:2: ( (enumLiteral_0= 'COMBAT' ) | (enumLiteral_1= 'TREASURE' ) | (enumLiteral_2= 'BOSS' ) | (enumLiteral_3= 'PUZZLE' ) | (enumLiteral_4= 'SHOP' ) )
+            int alt7=5;
             switch ( input.LA(1) ) {
-            case 24:
+            case 36:
                 {
-                alt4=1;
+                alt7=1;
                 }
                 break;
-            case 25:
+            case 37:
                 {
-                alt4=2;
+                alt7=2;
                 }
                 break;
-            case 26:
+            case 38:
                 {
-                alt4=3;
+                alt7=3;
                 }
                 break;
-            case 27:
+            case 39:
                 {
-                alt4=4;
+                alt7=4;
                 }
                 break;
-            case 28:
+            case 40:
                 {
-                alt4=5;
+                alt7=5;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 4, 0, input);
+                    new NoViableAltException("", 7, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt4) {
+            switch (alt7) {
                 case 1 :
-                    // InternalDungeonDSL.g:399:3: (enumLiteral_0= 'COMBAT' )
+                    // InternalDungeonDSL.g:658:3: (enumLiteral_0= 'COMBAT' )
                     {
-                    // InternalDungeonDSL.g:399:3: (enumLiteral_0= 'COMBAT' )
-                    // InternalDungeonDSL.g:400:4: enumLiteral_0= 'COMBAT'
+                    // InternalDungeonDSL.g:658:3: (enumLiteral_0= 'COMBAT' )
+                    // InternalDungeonDSL.g:659:4: enumLiteral_0= 'COMBAT'
                     {
-                    enumLiteral_0=(Token)match(input,24,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,36,FOLLOW_2); 
 
                     				current = grammarAccess.getRoomTypesAccess().getCOMBATEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getRoomTypesAccess().getCOMBATEnumLiteralDeclaration_0());
@@ -887,12 +1419,12 @@ public class InternalDungeonDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalDungeonDSL.g:407:3: (enumLiteral_1= 'TREASURE' )
+                    // InternalDungeonDSL.g:666:3: (enumLiteral_1= 'TREASURE' )
                     {
-                    // InternalDungeonDSL.g:407:3: (enumLiteral_1= 'TREASURE' )
-                    // InternalDungeonDSL.g:408:4: enumLiteral_1= 'TREASURE'
+                    // InternalDungeonDSL.g:666:3: (enumLiteral_1= 'TREASURE' )
+                    // InternalDungeonDSL.g:667:4: enumLiteral_1= 'TREASURE'
                     {
-                    enumLiteral_1=(Token)match(input,25,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,37,FOLLOW_2); 
 
                     				current = grammarAccess.getRoomTypesAccess().getTREASUREEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getRoomTypesAccess().getTREASUREEnumLiteralDeclaration_1());
@@ -904,12 +1436,12 @@ public class InternalDungeonDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalDungeonDSL.g:415:3: (enumLiteral_2= 'BOSS' )
+                    // InternalDungeonDSL.g:674:3: (enumLiteral_2= 'BOSS' )
                     {
-                    // InternalDungeonDSL.g:415:3: (enumLiteral_2= 'BOSS' )
-                    // InternalDungeonDSL.g:416:4: enumLiteral_2= 'BOSS'
+                    // InternalDungeonDSL.g:674:3: (enumLiteral_2= 'BOSS' )
+                    // InternalDungeonDSL.g:675:4: enumLiteral_2= 'BOSS'
                     {
-                    enumLiteral_2=(Token)match(input,26,FOLLOW_2); 
+                    enumLiteral_2=(Token)match(input,38,FOLLOW_2); 
 
                     				current = grammarAccess.getRoomTypesAccess().getBOSSEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_2, grammarAccess.getRoomTypesAccess().getBOSSEnumLiteralDeclaration_2());
@@ -921,12 +1453,12 @@ public class InternalDungeonDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalDungeonDSL.g:423:3: (enumLiteral_3= 'PUZZLE' )
+                    // InternalDungeonDSL.g:682:3: (enumLiteral_3= 'PUZZLE' )
                     {
-                    // InternalDungeonDSL.g:423:3: (enumLiteral_3= 'PUZZLE' )
-                    // InternalDungeonDSL.g:424:4: enumLiteral_3= 'PUZZLE'
+                    // InternalDungeonDSL.g:682:3: (enumLiteral_3= 'PUZZLE' )
+                    // InternalDungeonDSL.g:683:4: enumLiteral_3= 'PUZZLE'
                     {
-                    enumLiteral_3=(Token)match(input,27,FOLLOW_2); 
+                    enumLiteral_3=(Token)match(input,39,FOLLOW_2); 
 
                     				current = grammarAccess.getRoomTypesAccess().getPUZZLEEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_3, grammarAccess.getRoomTypesAccess().getPUZZLEEnumLiteralDeclaration_3());
@@ -938,12 +1470,12 @@ public class InternalDungeonDSLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalDungeonDSL.g:431:3: (enumLiteral_4= 'SHOP' )
+                    // InternalDungeonDSL.g:690:3: (enumLiteral_4= 'SHOP' )
                     {
-                    // InternalDungeonDSL.g:431:3: (enumLiteral_4= 'SHOP' )
-                    // InternalDungeonDSL.g:432:4: enumLiteral_4= 'SHOP'
+                    // InternalDungeonDSL.g:690:3: (enumLiteral_4= 'SHOP' )
+                    // InternalDungeonDSL.g:691:4: enumLiteral_4= 'SHOP'
                     {
-                    enumLiteral_4=(Token)match(input,28,FOLLOW_2); 
+                    enumLiteral_4=(Token)match(input,40,FOLLOW_2); 
 
                     				current = grammarAccess.getRoomTypesAccess().getSHOPEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_4, grammarAccess.getRoomTypesAccess().getSHOPEnumLiteralDeclaration_4());
@@ -975,6 +1507,94 @@ public class InternalDungeonDSLParser extends AbstractInternalAntlrParser {
     }
     // $ANTLR end "ruleRoomTypes"
 
+
+    // $ANTLR start "ruleEventTrigger"
+    // InternalDungeonDSL.g:701:1: ruleEventTrigger returns [Enumerator current=null] : ( (enumLiteral_0= 'stepOn' ) | (enumLiteral_1= 'openDoor' ) ) ;
+    public final Enumerator ruleEventTrigger() throws RecognitionException {
+        Enumerator current = null;
+
+        Token enumLiteral_0=null;
+        Token enumLiteral_1=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalDungeonDSL.g:707:2: ( ( (enumLiteral_0= 'stepOn' ) | (enumLiteral_1= 'openDoor' ) ) )
+            // InternalDungeonDSL.g:708:2: ( (enumLiteral_0= 'stepOn' ) | (enumLiteral_1= 'openDoor' ) )
+            {
+            // InternalDungeonDSL.g:708:2: ( (enumLiteral_0= 'stepOn' ) | (enumLiteral_1= 'openDoor' ) )
+            int alt8=2;
+            int LA8_0 = input.LA(1);
+
+            if ( (LA8_0==41) ) {
+                alt8=1;
+            }
+            else if ( (LA8_0==42) ) {
+                alt8=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 8, 0, input);
+
+                throw nvae;
+            }
+            switch (alt8) {
+                case 1 :
+                    // InternalDungeonDSL.g:709:3: (enumLiteral_0= 'stepOn' )
+                    {
+                    // InternalDungeonDSL.g:709:3: (enumLiteral_0= 'stepOn' )
+                    // InternalDungeonDSL.g:710:4: enumLiteral_0= 'stepOn'
+                    {
+                    enumLiteral_0=(Token)match(input,41,FOLLOW_2); 
+
+                    				current = grammarAccess.getEventTriggerAccess().getStepOnEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_0, grammarAccess.getEventTriggerAccess().getStepOnEnumLiteralDeclaration_0());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDungeonDSL.g:717:3: (enumLiteral_1= 'openDoor' )
+                    {
+                    // InternalDungeonDSL.g:717:3: (enumLiteral_1= 'openDoor' )
+                    // InternalDungeonDSL.g:718:4: enumLiteral_1= 'openDoor'
+                    {
+                    enumLiteral_1=(Token)match(input,42,FOLLOW_2); 
+
+                    				current = grammarAccess.getEventTriggerAccess().getOpenDoorEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                    				newLeafNode(enumLiteral_1, grammarAccess.getEventTriggerAccess().getOpenDoorEnumLiteralDeclaration_1());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleEventTrigger"
+
     // Delegated rules
 
 
@@ -992,9 +1612,20 @@ public class InternalDungeonDSLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000030000L});
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000050000L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000E00000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000E00000000L});
     public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x000000001F000000L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x000001F000000000L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000003000000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000004010000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000060000000000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000180000000L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000000010000L});
 
 }

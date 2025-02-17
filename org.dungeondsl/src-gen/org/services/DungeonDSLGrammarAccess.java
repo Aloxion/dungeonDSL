@@ -161,12 +161,31 @@ public class DungeonDSLGrammarAccess extends AbstractElementFinder.AbstractGramm
 		private final Keyword cEqualsSignKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		private final Assignment cTypeAssignment_8 = (Assignment)cGroup.eContents().get(8);
 		private final RuleCall cTypeRoomTypesEnumRuleCall_8_0 = (RuleCall)cTypeAssignment_8.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cFloorKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cEqualsSignKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cFloorAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cFloorIDTerminalRuleCall_11_0 = (RuleCall)cFloorAssignment_11.eContents().get(0);
+		private final Keyword cConnectionsKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		private final Keyword cEqualsSignKeyword_13 = (Keyword)cGroup.eContents().get(13);
+		private final Keyword cLeftSquareBracketKeyword_14 = (Keyword)cGroup.eContents().get(14);
+		private final Assignment cConnectionsAssignment_15 = (Assignment)cGroup.eContents().get(15);
+		private final RuleCall cConnectionsIDTerminalRuleCall_15_0 = (RuleCall)cConnectionsAssignment_15.eContents().get(0);
+		private final Group cGroup_16 = (Group)cGroup.eContents().get(16);
+		private final Keyword cCommaKeyword_16_0 = (Keyword)cGroup_16.eContents().get(0);
+		private final Assignment cConnectionsAssignment_16_1 = (Assignment)cGroup_16.eContents().get(1);
+		private final RuleCall cConnectionsIDTerminalRuleCall_16_1_0 = (RuleCall)cConnectionsAssignment_16_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_17 = (Keyword)cGroup.eContents().get(17);
+		private final Assignment cTrapsAssignment_18 = (Assignment)cGroup.eContents().get(18);
+		private final RuleCall cTrapsTrapParserRuleCall_18_0 = (RuleCall)cTrapsAssignment_18.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_19 = (Keyword)cGroup.eContents().get(19);
 		
 		//Room:
 		//    'Room' name=ID '{'
 		//        'size' '=' size=Sizes
 		//        'type' '=' type=RoomTypes
+		//        'floor' '=' floor=ID
+		//        'connections' "=" '[' connections+=ID (',' connections+=ID)* ']'
+		//        (traps+=Trap)*
 		//    '}'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -174,6 +193,9 @@ public class DungeonDSLGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//'Room' name=ID '{'
 		//    'size' '=' size=Sizes
 		//    'type' '=' type=RoomTypes
+		//    'floor' '=' floor=ID
+		//    'connections' "=" '[' connections+=ID (',' connections+=ID)* ']'
+		//    (traps+=Trap)*
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -213,10 +235,171 @@ public class DungeonDSLGrammarAccess extends AbstractElementFinder.AbstractGramm
 		//RoomTypes
 		public RuleCall getTypeRoomTypesEnumRuleCall_8_0() { return cTypeRoomTypesEnumRuleCall_8_0; }
 		
+		//'floor'
+		public Keyword getFloorKeyword_9() { return cFloorKeyword_9; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_10() { return cEqualsSignKeyword_10; }
+		
+		//floor=ID
+		public Assignment getFloorAssignment_11() { return cFloorAssignment_11; }
+		
+		//ID
+		public RuleCall getFloorIDTerminalRuleCall_11_0() { return cFloorIDTerminalRuleCall_11_0; }
+		
+		//'connections'
+		public Keyword getConnectionsKeyword_12() { return cConnectionsKeyword_12; }
+		
+		//"="
+		public Keyword getEqualsSignKeyword_13() { return cEqualsSignKeyword_13; }
+		
+		//'['
+		public Keyword getLeftSquareBracketKeyword_14() { return cLeftSquareBracketKeyword_14; }
+		
+		//connections+=ID
+		public Assignment getConnectionsAssignment_15() { return cConnectionsAssignment_15; }
+		
+		//ID
+		public RuleCall getConnectionsIDTerminalRuleCall_15_0() { return cConnectionsIDTerminalRuleCall_15_0; }
+		
+		//(',' connections+=ID)*
+		public Group getGroup_16() { return cGroup_16; }
+		
+		//','
+		public Keyword getCommaKeyword_16_0() { return cCommaKeyword_16_0; }
+		
+		//connections+=ID
+		public Assignment getConnectionsAssignment_16_1() { return cConnectionsAssignment_16_1; }
+		
+		//ID
+		public RuleCall getConnectionsIDTerminalRuleCall_16_1_0() { return cConnectionsIDTerminalRuleCall_16_1_0; }
+		
+		//']'
+		public Keyword getRightSquareBracketKeyword_17() { return cRightSquareBracketKeyword_17; }
+		
+		//(traps+=Trap)*
+		public Assignment getTrapsAssignment_18() { return cTrapsAssignment_18; }
+		
+		//Trap
+		public RuleCall getTrapsTrapParserRuleCall_18_0() { return cTrapsTrapParserRuleCall_18_0; }
+		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
+		public Keyword getRightCurlyBracketKeyword_19() { return cRightCurlyBracketKeyword_19; }
+	}
+	public class TrapElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.DungeonDSL.Trap");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cTrapKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cTriggerKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cColonKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cTriggerAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cTriggerEventTriggerEnumRuleCall_5_0 = (RuleCall)cTriggerAssignment_5.eContents().get(0);
+		private final Keyword cDisarmableKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cColonKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cDisarmableAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cDisarmableBOOLEANEnumRuleCall_8_0 = (RuleCall)cDisarmableAssignment_8.eContents().get(0);
+		private final Keyword cTriggerChanceKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cColonKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cTriggerChanceAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cTriggerChanceINTTerminalRuleCall_11_0 = (RuleCall)cTriggerChanceAssignment_11.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		
+		//Trap:
+		//    'Trap' name=ID '{'
+		//        'trigger' ':' trigger=EventTrigger
+		//        'disarmable' ':' disarmable=BOOLEAN
+		//        'triggerChance' ':' triggerChance=INT
+		//    '}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'Trap' name=ID '{'
+		//    'trigger' ':' trigger=EventTrigger
+		//    'disarmable' ':' disarmable=BOOLEAN
+		//    'triggerChance' ':' triggerChance=INT
+		//'}'
+		public Group getGroup() { return cGroup; }
+		
+		//'Trap'
+		public Keyword getTrapKeyword_0() { return cTrapKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		
+		//'trigger'
+		public Keyword getTriggerKeyword_3() { return cTriggerKeyword_3; }
+		
+		//':'
+		public Keyword getColonKeyword_4() { return cColonKeyword_4; }
+		
+		//trigger=EventTrigger
+		public Assignment getTriggerAssignment_5() { return cTriggerAssignment_5; }
+		
+		//EventTrigger
+		public RuleCall getTriggerEventTriggerEnumRuleCall_5_0() { return cTriggerEventTriggerEnumRuleCall_5_0; }
+		
+		//'disarmable'
+		public Keyword getDisarmableKeyword_6() { return cDisarmableKeyword_6; }
+		
+		//':'
+		public Keyword getColonKeyword_7() { return cColonKeyword_7; }
+		
+		//disarmable=BOOLEAN
+		public Assignment getDisarmableAssignment_8() { return cDisarmableAssignment_8; }
+		
+		//BOOLEAN
+		public RuleCall getDisarmableBOOLEANEnumRuleCall_8_0() { return cDisarmableBOOLEANEnumRuleCall_8_0; }
+		
+		//'triggerChance'
+		public Keyword getTriggerChanceKeyword_9() { return cTriggerChanceKeyword_9; }
+		
+		//':'
+		public Keyword getColonKeyword_10() { return cColonKeyword_10; }
+		
+		//triggerChance=INT
+		public Assignment getTriggerChanceAssignment_11() { return cTriggerChanceAssignment_11; }
+		
+		//INT
+		public RuleCall getTriggerChanceINTTerminalRuleCall_11_0() { return cTriggerChanceINTTerminalRuleCall_11_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
 	}
 	
+	public class BOOLEANElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.DungeonDSL.BOOLEAN");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cTrueEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cTrueTrueKeyword_0_0 = (Keyword)cTrueEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cFalseEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cFalseFalseKeyword_1_0 = (Keyword)cFalseEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum BOOLEAN:
+		//    true | false
+		//;
+		public EnumRule getRule() { return rule; }
+		
+		//true | false
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//true
+		public EnumLiteralDeclaration getTrueEnumLiteralDeclaration_0() { return cTrueEnumLiteralDeclaration_0; }
+		
+		public Keyword getTrueTrueKeyword_0_0() { return cTrueTrueKeyword_0_0; }
+		
+		//false
+		public EnumLiteralDeclaration getFalseEnumLiteralDeclaration_1() { return cFalseEnumLiteralDeclaration_1; }
+		
+		public Keyword getFalseFalseKeyword_1_0() { return cFalseFalseKeyword_1_0; }
+	}
 	public class SizesElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.DungeonDSL.Sizes");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -297,12 +480,42 @@ public class DungeonDSLGrammarAccess extends AbstractElementFinder.AbstractGramm
 		
 		public Keyword getSHOPSHOPKeyword_4_0() { return cSHOPSHOPKeyword_4_0; }
 	}
+	public class EventTriggerElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.DungeonDSL.EventTrigger");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cStepOnEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cStepOnStepOnKeyword_0_0 = (Keyword)cStepOnEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cOpenDoorEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cOpenDoorOpenDoorKeyword_1_0 = (Keyword)cOpenDoorEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum EventTrigger:
+		//    stepOn |
+		//    openDoor;
+		public EnumRule getRule() { return rule; }
+		
+		//stepOn |
+		//openDoor
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//stepOn
+		public EnumLiteralDeclaration getStepOnEnumLiteralDeclaration_0() { return cStepOnEnumLiteralDeclaration_0; }
+		
+		public Keyword getStepOnStepOnKeyword_0_0() { return cStepOnStepOnKeyword_0_0; }
+		
+		//openDoor
+		public EnumLiteralDeclaration getOpenDoorEnumLiteralDeclaration_1() { return cOpenDoorEnumLiteralDeclaration_1; }
+		
+		public Keyword getOpenDoorOpenDoorKeyword_1_0() { return cOpenDoorOpenDoorKeyword_1_0; }
+	}
 	
 	private final DungeonElements pDungeon;
 	private final FloorElements pFloor;
 	private final RoomElements pRoom;
+	private final TrapElements pTrap;
+	private final BOOLEANElements eBOOLEAN;
 	private final SizesElements eSizes;
 	private final RoomTypesElements eRoomTypes;
+	private final EventTriggerElements eEventTrigger;
 	
 	private final Grammar grammar;
 	
@@ -316,8 +529,11 @@ public class DungeonDSLGrammarAccess extends AbstractElementFinder.AbstractGramm
 		this.pDungeon = new DungeonElements();
 		this.pFloor = new FloorElements();
 		this.pRoom = new RoomElements();
+		this.pTrap = new TrapElements();
+		this.eBOOLEAN = new BOOLEANElements();
 		this.eSizes = new SizesElements();
 		this.eRoomTypes = new RoomTypesElements();
+		this.eEventTrigger = new EventTriggerElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -377,6 +593,9 @@ public class DungeonDSLGrammarAccess extends AbstractElementFinder.AbstractGramm
 	//    'Room' name=ID '{'
 	//        'size' '=' size=Sizes
 	//        'type' '=' type=RoomTypes
+	//        'floor' '=' floor=ID
+	//        'connections' "=" '[' connections+=ID (',' connections+=ID)* ']'
+	//        (traps+=Trap)*
 	//    '}'
 	//;
 	public RoomElements getRoomAccess() {
@@ -385,6 +604,31 @@ public class DungeonDSLGrammarAccess extends AbstractElementFinder.AbstractGramm
 	
 	public ParserRule getRoomRule() {
 		return getRoomAccess().getRule();
+	}
+	
+	//Trap:
+	//    'Trap' name=ID '{'
+	//        'trigger' ':' trigger=EventTrigger
+	//        'disarmable' ':' disarmable=BOOLEAN
+	//        'triggerChance' ':' triggerChance=INT
+	//    '}';
+	public TrapElements getTrapAccess() {
+		return pTrap;
+	}
+	
+	public ParserRule getTrapRule() {
+		return getTrapAccess().getRule();
+	}
+	
+	//enum BOOLEAN:
+	//    true | false
+	//;
+	public BOOLEANElements getBOOLEANAccess() {
+		return eBOOLEAN;
+	}
+	
+	public EnumRule getBOOLEANRule() {
+		return getBOOLEANAccess().getRule();
 	}
 	
 	//enum Sizes:
@@ -407,6 +651,17 @@ public class DungeonDSLGrammarAccess extends AbstractElementFinder.AbstractGramm
 	
 	public EnumRule getRoomTypesRule() {
 		return getRoomTypesAccess().getRule();
+	}
+	
+	//enum EventTrigger:
+	//    stepOn |
+	//    openDoor;
+	public EventTriggerElements getEventTriggerAccess() {
+		return eEventTrigger;
+	}
+	
+	public EnumRule getEventTriggerRule() {
+		return getEventTriggerAccess().getRule();
 	}
 	
 	//terminal ID: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

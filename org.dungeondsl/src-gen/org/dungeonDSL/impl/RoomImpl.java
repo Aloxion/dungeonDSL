@@ -3,17 +3,28 @@
  */
 package org.dungeonDSL.impl;
 
+import java.util.Collection;
+
 import org.dungeonDSL.DungeonDSLPackage;
 import org.dungeonDSL.Room;
 import org.dungeonDSL.RoomTypes;
 import org.dungeonDSL.Sizes;
+import org.dungeonDSL.Trap;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EDataTypeEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,6 +37,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link org.dungeonDSL.impl.RoomImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.dungeonDSL.impl.RoomImpl#getSize <em>Size</em>}</li>
  *   <li>{@link org.dungeonDSL.impl.RoomImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.dungeonDSL.impl.RoomImpl#getFloor <em>Floor</em>}</li>
+ *   <li>{@link org.dungeonDSL.impl.RoomImpl#getConnections <em>Connections</em>}</li>
+ *   <li>{@link org.dungeonDSL.impl.RoomImpl#getTraps <em>Traps</em>}</li>
  * </ul>
  *
  * @generated
@@ -91,6 +105,46 @@ public class RoomImpl extends MinimalEObjectImpl.Container implements Room
    * @ordered
    */
   protected RoomTypes type = TYPE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getFloor() <em>Floor</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFloor()
+   * @generated
+   * @ordered
+   */
+  protected static final String FLOOR_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getFloor() <em>Floor</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFloor()
+   * @generated
+   * @ordered
+   */
+  protected String floor = FLOOR_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getConnections() <em>Connections</em>}' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConnections()
+   * @generated
+   * @ordered
+   */
+  protected EList<String> connections;
+
+  /**
+   * The cached value of the '{@link #getTraps() <em>Traps</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTraps()
+   * @generated
+   * @ordered
+   */
+  protected EList<Trap> traps;
 
   /**
    * <!-- begin-user-doc -->
@@ -194,6 +248,77 @@ public class RoomImpl extends MinimalEObjectImpl.Container implements Room
    * @generated
    */
   @Override
+  public String getFloor()
+  {
+    return floor;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setFloor(String newFloor)
+  {
+    String oldFloor = floor;
+    floor = newFloor;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DungeonDSLPackage.ROOM__FLOOR, oldFloor, floor));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<String> getConnections()
+  {
+    if (connections == null)
+    {
+      connections = new EDataTypeEList<String>(String.class, this, DungeonDSLPackage.ROOM__CONNECTIONS);
+    }
+    return connections;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<Trap> getTraps()
+  {
+    if (traps == null)
+    {
+      traps = new EObjectContainmentEList<Trap>(Trap.class, this, DungeonDSLPackage.ROOM__TRAPS);
+    }
+    return traps;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case DungeonDSLPackage.ROOM__TRAPS:
+        return ((InternalEList<?>)getTraps()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -204,6 +329,12 @@ public class RoomImpl extends MinimalEObjectImpl.Container implements Room
         return getSize();
       case DungeonDSLPackage.ROOM__TYPE:
         return getType();
+      case DungeonDSLPackage.ROOM__FLOOR:
+        return getFloor();
+      case DungeonDSLPackage.ROOM__CONNECTIONS:
+        return getConnections();
+      case DungeonDSLPackage.ROOM__TRAPS:
+        return getTraps();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -213,6 +344,7 @@ public class RoomImpl extends MinimalEObjectImpl.Container implements Room
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -226,6 +358,17 @@ public class RoomImpl extends MinimalEObjectImpl.Container implements Room
         return;
       case DungeonDSLPackage.ROOM__TYPE:
         setType((RoomTypes)newValue);
+        return;
+      case DungeonDSLPackage.ROOM__FLOOR:
+        setFloor((String)newValue);
+        return;
+      case DungeonDSLPackage.ROOM__CONNECTIONS:
+        getConnections().clear();
+        getConnections().addAll((Collection<? extends String>)newValue);
+        return;
+      case DungeonDSLPackage.ROOM__TRAPS:
+        getTraps().clear();
+        getTraps().addAll((Collection<? extends Trap>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -250,6 +393,15 @@ public class RoomImpl extends MinimalEObjectImpl.Container implements Room
       case DungeonDSLPackage.ROOM__TYPE:
         setType(TYPE_EDEFAULT);
         return;
+      case DungeonDSLPackage.ROOM__FLOOR:
+        setFloor(FLOOR_EDEFAULT);
+        return;
+      case DungeonDSLPackage.ROOM__CONNECTIONS:
+        getConnections().clear();
+        return;
+      case DungeonDSLPackage.ROOM__TRAPS:
+        getTraps().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -270,6 +422,12 @@ public class RoomImpl extends MinimalEObjectImpl.Container implements Room
         return size != SIZE_EDEFAULT;
       case DungeonDSLPackage.ROOM__TYPE:
         return type != TYPE_EDEFAULT;
+      case DungeonDSLPackage.ROOM__FLOOR:
+        return FLOOR_EDEFAULT == null ? floor != null : !FLOOR_EDEFAULT.equals(floor);
+      case DungeonDSLPackage.ROOM__CONNECTIONS:
+        return connections != null && !connections.isEmpty();
+      case DungeonDSLPackage.ROOM__TRAPS:
+        return traps != null && !traps.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -291,6 +449,10 @@ public class RoomImpl extends MinimalEObjectImpl.Container implements Room
     result.append(size);
     result.append(", type: ");
     result.append(type);
+    result.append(", floor: ");
+    result.append(floor);
+    result.append(", connections: ");
+    result.append(connections);
     result.append(')');
     return result.toString();
   }

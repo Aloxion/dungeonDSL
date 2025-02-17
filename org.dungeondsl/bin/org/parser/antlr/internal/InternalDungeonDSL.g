@@ -345,10 +345,269 @@ ruleRoom returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_9='}'
+		otherlv_9='floor'
 		{
-			newLeafNode(otherlv_9, grammarAccess.getRoomAccess().getRightCurlyBracketKeyword_9());
+			newLeafNode(otherlv_9, grammarAccess.getRoomAccess().getFloorKeyword_9());
 		}
+		otherlv_10='='
+		{
+			newLeafNode(otherlv_10, grammarAccess.getRoomAccess().getEqualsSignKeyword_10());
+		}
+		(
+			(
+				lv_floor_11_0=RULE_ID
+				{
+					newLeafNode(lv_floor_11_0, grammarAccess.getRoomAccess().getFloorIDTerminalRuleCall_11_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getRoomRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"floor",
+						lv_floor_11_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		otherlv_12='connections'
+		{
+			newLeafNode(otherlv_12, grammarAccess.getRoomAccess().getConnectionsKeyword_12());
+		}
+		otherlv_13='='
+		{
+			newLeafNode(otherlv_13, grammarAccess.getRoomAccess().getEqualsSignKeyword_13());
+		}
+		otherlv_14='['
+		{
+			newLeafNode(otherlv_14, grammarAccess.getRoomAccess().getLeftSquareBracketKeyword_14());
+		}
+		(
+			(
+				lv_connections_15_0=RULE_ID
+				{
+					newLeafNode(lv_connections_15_0, grammarAccess.getRoomAccess().getConnectionsIDTerminalRuleCall_15_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getRoomRule());
+					}
+					addWithLastConsumed(
+						$current,
+						"connections",
+						lv_connections_15_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		(
+			otherlv_16=','
+			{
+				newLeafNode(otherlv_16, grammarAccess.getRoomAccess().getCommaKeyword_16_0());
+			}
+			(
+				(
+					lv_connections_17_0=RULE_ID
+					{
+						newLeafNode(lv_connections_17_0, grammarAccess.getRoomAccess().getConnectionsIDTerminalRuleCall_16_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getRoomRule());
+						}
+						addWithLastConsumed(
+							$current,
+							"connections",
+							lv_connections_17_0,
+							"org.eclipse.xtext.common.Terminals.ID");
+					}
+				)
+			)
+		)*
+		otherlv_18=']'
+		{
+			newLeafNode(otherlv_18, grammarAccess.getRoomAccess().getRightSquareBracketKeyword_17());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getRoomAccess().getTrapsTrapParserRuleCall_18_0());
+				}
+				lv_traps_19_0=ruleTrap
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getRoomRule());
+					}
+					add(
+						$current,
+						"traps",
+						lv_traps_19_0,
+						"org.DungeonDSL.Trap");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		otherlv_20='}'
+		{
+			newLeafNode(otherlv_20, grammarAccess.getRoomAccess().getRightCurlyBracketKeyword_19());
+		}
+	)
+;
+
+// Entry rule entryRuleTrap
+entryRuleTrap returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getTrapRule()); }
+	iv_ruleTrap=ruleTrap
+	{ $current=$iv_ruleTrap.current; }
+	EOF;
+
+// Rule Trap
+ruleTrap returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='Trap'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getTrapAccess().getTrapKeyword_0());
+		}
+		(
+			(
+				lv_name_1_0=RULE_ID
+				{
+					newLeafNode(lv_name_1_0, grammarAccess.getTrapAccess().getNameIDTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getTrapRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		otherlv_2='{'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getTrapAccess().getLeftCurlyBracketKeyword_2());
+		}
+		otherlv_3='trigger'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getTrapAccess().getTriggerKeyword_3());
+		}
+		otherlv_4=':'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getTrapAccess().getColonKeyword_4());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getTrapAccess().getTriggerEventTriggerEnumRuleCall_5_0());
+				}
+				lv_trigger_5_0=ruleEventTrigger
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getTrapRule());
+					}
+					set(
+						$current,
+						"trigger",
+						lv_trigger_5_0,
+						"org.DungeonDSL.EventTrigger");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_6='disarmable'
+		{
+			newLeafNode(otherlv_6, grammarAccess.getTrapAccess().getDisarmableKeyword_6());
+		}
+		otherlv_7=':'
+		{
+			newLeafNode(otherlv_7, grammarAccess.getTrapAccess().getColonKeyword_7());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getTrapAccess().getDisarmableBOOLEANEnumRuleCall_8_0());
+				}
+				lv_disarmable_8_0=ruleBOOLEAN
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getTrapRule());
+					}
+					set(
+						$current,
+						"disarmable",
+						lv_disarmable_8_0,
+						"org.DungeonDSL.BOOLEAN");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_9='triggerChance'
+		{
+			newLeafNode(otherlv_9, grammarAccess.getTrapAccess().getTriggerChanceKeyword_9());
+		}
+		otherlv_10=':'
+		{
+			newLeafNode(otherlv_10, grammarAccess.getTrapAccess().getColonKeyword_10());
+		}
+		(
+			(
+				lv_triggerChance_11_0=RULE_INT
+				{
+					newLeafNode(lv_triggerChance_11_0, grammarAccess.getTrapAccess().getTriggerChanceINTTerminalRuleCall_11_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getTrapRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"triggerChance",
+						lv_triggerChance_11_0,
+						"org.eclipse.xtext.common.Terminals.INT");
+				}
+			)
+		)
+		otherlv_12='}'
+		{
+			newLeafNode(otherlv_12, grammarAccess.getTrapAccess().getRightCurlyBracketKeyword_12());
+		}
+	)
+;
+
+// Rule BOOLEAN
+ruleBOOLEAN returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='true'
+			{
+				$current = grammarAccess.getBOOLEANAccess().getTrueEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getBOOLEANAccess().getTrueEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='false'
+			{
+				$current = grammarAccess.getBOOLEANAccess().getFalseEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getBOOLEANAccess().getFalseEnumLiteralDeclaration_1());
+			}
+		)
 	)
 ;
 
@@ -433,6 +692,33 @@ ruleRoomTypes returns [Enumerator current=null]
 			{
 				$current = grammarAccess.getRoomTypesAccess().getSHOPEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_4, grammarAccess.getRoomTypesAccess().getSHOPEnumLiteralDeclaration_4());
+			}
+		)
+	)
+;
+
+// Rule EventTrigger
+ruleEventTrigger returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='stepOn'
+			{
+				$current = grammarAccess.getEventTriggerAccess().getStepOnEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getEventTriggerAccess().getStepOnEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='openDoor'
+			{
+				$current = grammarAccess.getEventTriggerAccess().getOpenDoorEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getEventTriggerAccess().getOpenDoorEnumLiteralDeclaration_1());
 			}
 		)
 	)

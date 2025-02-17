@@ -16,7 +16,8 @@ Require-Bundle: org.dungeondsl,
  org.eclipse.ui,
  org.eclipse.compare,
  org.eclipse.xtext.builder
-Import-Package: org.apache.log4j
+Import-Package: org.apache.log4j,
+ org.slf4j;version="[1.7.0,2.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: org.ui.quickfix,
  org.dungeondsl.ui.internal,

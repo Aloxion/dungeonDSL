@@ -31,11 +31,15 @@ public class DungeonDSLParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, DungeonDSLGrammarAccess grammarAccess) {
+			builder.put(grammarAccess.getBOOLEANAccess().getAlternatives(), "rule__BOOLEAN__Alternatives");
 			builder.put(grammarAccess.getSizesAccess().getAlternatives(), "rule__Sizes__Alternatives");
 			builder.put(grammarAccess.getRoomTypesAccess().getAlternatives(), "rule__RoomTypes__Alternatives");
+			builder.put(grammarAccess.getEventTriggerAccess().getAlternatives(), "rule__EventTrigger__Alternatives");
 			builder.put(grammarAccess.getDungeonAccess().getGroup(), "rule__Dungeon__Group__0");
 			builder.put(grammarAccess.getFloorAccess().getGroup(), "rule__Floor__Group__0");
 			builder.put(grammarAccess.getRoomAccess().getGroup(), "rule__Room__Group__0");
+			builder.put(grammarAccess.getRoomAccess().getGroup_16(), "rule__Room__Group_16__0");
+			builder.put(grammarAccess.getTrapAccess().getGroup(), "rule__Trap__Group__0");
 			builder.put(grammarAccess.getDungeonAccess().getNameAssignment_1(), "rule__Dungeon__NameAssignment_1");
 			builder.put(grammarAccess.getDungeonAccess().getThemeAssignment_5(), "rule__Dungeon__ThemeAssignment_5");
 			builder.put(grammarAccess.getDungeonAccess().getLvlAssignment_8(), "rule__Dungeon__LvlAssignment_8");
@@ -45,6 +49,14 @@ public class DungeonDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getRoomAccess().getNameAssignment_1(), "rule__Room__NameAssignment_1");
 			builder.put(grammarAccess.getRoomAccess().getSizeAssignment_5(), "rule__Room__SizeAssignment_5");
 			builder.put(grammarAccess.getRoomAccess().getTypeAssignment_8(), "rule__Room__TypeAssignment_8");
+			builder.put(grammarAccess.getRoomAccess().getFloorAssignment_11(), "rule__Room__FloorAssignment_11");
+			builder.put(grammarAccess.getRoomAccess().getConnectionsAssignment_15(), "rule__Room__ConnectionsAssignment_15");
+			builder.put(grammarAccess.getRoomAccess().getConnectionsAssignment_16_1(), "rule__Room__ConnectionsAssignment_16_1");
+			builder.put(grammarAccess.getRoomAccess().getTrapsAssignment_18(), "rule__Room__TrapsAssignment_18");
+			builder.put(grammarAccess.getTrapAccess().getNameAssignment_1(), "rule__Trap__NameAssignment_1");
+			builder.put(grammarAccess.getTrapAccess().getTriggerAssignment_5(), "rule__Trap__TriggerAssignment_5");
+			builder.put(grammarAccess.getTrapAccess().getDisarmableAssignment_8(), "rule__Trap__DisarmableAssignment_8");
+			builder.put(grammarAccess.getTrapAccess().getTriggerChanceAssignment_11(), "rule__Trap__TriggerChanceAssignment_11");
 		}
 	}
 	

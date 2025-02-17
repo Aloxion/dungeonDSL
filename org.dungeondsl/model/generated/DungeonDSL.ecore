@@ -17,6 +17,21 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="#//Sizes"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//RoomTypes"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="floor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connections" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="traps" upperBound="-1"
+        eType="#//Trap" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Trap">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="trigger" eType="#//EventTrigger"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="disarmable" eType="#//BOOLEAN"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="triggerChance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="BOOLEAN">
+    <eLiterals name="true" literal="true"/>
+    <eLiterals name="false" value="1" literal="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Sizes">
     <eLiterals name="LARGE" literal="LARGE"/>
@@ -29,5 +44,9 @@
     <eLiterals name="BOSS" value="2" literal="BOSS"/>
     <eLiterals name="PUZZLE" value="3" literal="PUZZLE"/>
     <eLiterals name="SHOP" value="4" literal="SHOP"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EventTrigger">
+    <eLiterals name="stepOn" literal="stepOn"/>
+    <eLiterals name="openDoor" value="1" literal="openDoor"/>
   </eClassifiers>
 </ecore:EPackage>

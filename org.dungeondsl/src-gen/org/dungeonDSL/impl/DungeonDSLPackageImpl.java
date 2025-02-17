@@ -6,10 +6,12 @@ package org.dungeonDSL.impl;
 import org.dungeonDSL.Dungeon;
 import org.dungeonDSL.DungeonDSLFactory;
 import org.dungeonDSL.DungeonDSLPackage;
+import org.dungeonDSL.EventTrigger;
 import org.dungeonDSL.Floor;
 import org.dungeonDSL.Room;
 import org.dungeonDSL.RoomTypes;
 import org.dungeonDSL.Sizes;
+import org.dungeonDSL.Trap;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -53,6 +55,20 @@ public class DungeonDSLPackageImpl extends EPackageImpl implements DungeonDSLPac
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass trapEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum booleanEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EEnum sizesEEnum = null;
 
   /**
@@ -61,6 +77,13 @@ public class DungeonDSLPackageImpl extends EPackageImpl implements DungeonDSLPac
    * @generated
    */
   private EEnum roomTypesEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum eventTriggerEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -262,6 +285,105 @@ public class DungeonDSLPackageImpl extends EPackageImpl implements DungeonDSLPac
    * @generated
    */
   @Override
+  public EAttribute getRoom_Floor()
+  {
+    return (EAttribute)roomEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRoom_Connections()
+  {
+    return (EAttribute)roomEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRoom_Traps()
+  {
+    return (EReference)roomEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getTrap()
+  {
+    return trapEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTrap_Name()
+  {
+    return (EAttribute)trapEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTrap_Trigger()
+  {
+    return (EAttribute)trapEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTrap_Disarmable()
+  {
+    return (EAttribute)trapEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTrap_TriggerChance()
+  {
+    return (EAttribute)trapEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getBOOLEAN()
+  {
+    return booleanEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EEnum getSizes()
   {
     return sizesEEnum;
@@ -276,6 +398,17 @@ public class DungeonDSLPackageImpl extends EPackageImpl implements DungeonDSLPac
   public EEnum getRoomTypes()
   {
     return roomTypesEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getEventTrigger()
+  {
+    return eventTriggerEEnum;
   }
 
   /**
@@ -323,10 +456,21 @@ public class DungeonDSLPackageImpl extends EPackageImpl implements DungeonDSLPac
     createEAttribute(roomEClass, ROOM__NAME);
     createEAttribute(roomEClass, ROOM__SIZE);
     createEAttribute(roomEClass, ROOM__TYPE);
+    createEAttribute(roomEClass, ROOM__FLOOR);
+    createEAttribute(roomEClass, ROOM__CONNECTIONS);
+    createEReference(roomEClass, ROOM__TRAPS);
+
+    trapEClass = createEClass(TRAP);
+    createEAttribute(trapEClass, TRAP__NAME);
+    createEAttribute(trapEClass, TRAP__TRIGGER);
+    createEAttribute(trapEClass, TRAP__DISARMABLE);
+    createEAttribute(trapEClass, TRAP__TRIGGER_CHANCE);
 
     // Create enums
+    booleanEEnum = createEEnum(BOOLEAN);
     sizesEEnum = createEEnum(SIZES);
     roomTypesEEnum = createEEnum(ROOM_TYPES);
+    eventTriggerEEnum = createEEnum(EVENT_TRIGGER);
   }
 
   /**
@@ -374,8 +518,21 @@ public class DungeonDSLPackageImpl extends EPackageImpl implements DungeonDSLPac
     initEAttribute(getRoom_Name(), ecorePackage.getEString(), "name", null, 0, 1, Room.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getRoom_Size(), this.getSizes(), "size", null, 0, 1, Room.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getRoom_Type(), this.getRoomTypes(), "type", null, 0, 1, Room.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRoom_Floor(), ecorePackage.getEString(), "floor", null, 0, 1, Room.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRoom_Connections(), ecorePackage.getEString(), "connections", null, 0, -1, Room.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRoom_Traps(), this.getTrap(), null, "traps", null, 0, -1, Room.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(trapEClass, Trap.class, "Trap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTrap_Name(), ecorePackage.getEString(), "name", null, 0, 1, Trap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTrap_Trigger(), this.getEventTrigger(), "trigger", null, 0, 1, Trap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTrap_Disarmable(), this.getBOOLEAN(), "disarmable", null, 0, 1, Trap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTrap_TriggerChance(), ecorePackage.getEInt(), "triggerChance", null, 0, 1, Trap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
+    initEEnum(booleanEEnum, org.dungeonDSL.BOOLEAN.class, "BOOLEAN");
+    addEEnumLiteral(booleanEEnum, org.dungeonDSL.BOOLEAN.TRUE);
+    addEEnumLiteral(booleanEEnum, org.dungeonDSL.BOOLEAN.FALSE);
+
     initEEnum(sizesEEnum, Sizes.class, "Sizes");
     addEEnumLiteral(sizesEEnum, Sizes.LARGE);
     addEEnumLiteral(sizesEEnum, Sizes.MEDIUM);
@@ -387,6 +544,10 @@ public class DungeonDSLPackageImpl extends EPackageImpl implements DungeonDSLPac
     addEEnumLiteral(roomTypesEEnum, RoomTypes.BOSS);
     addEEnumLiteral(roomTypesEEnum, RoomTypes.PUZZLE);
     addEEnumLiteral(roomTypesEEnum, RoomTypes.SHOP);
+
+    initEEnum(eventTriggerEEnum, EventTrigger.class, "EventTrigger");
+    addEEnumLiteral(eventTriggerEEnum, EventTrigger.STEP_ON);
+    addEEnumLiteral(eventTriggerEEnum, EventTrigger.OPEN_DOOR);
 
     // Create resource
     createResource(eNS_URI);
