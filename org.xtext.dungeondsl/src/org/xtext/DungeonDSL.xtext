@@ -1,0 +1,49 @@
+grammar org.DungeonDSL with org.eclipse.xtext.common.Terminals
+
+generate dungeonDSL "http://www.DungeonDSL.org"
+
+
+Dungeon:
+    'Dungeon' name=ID '{'
+        'theme' '=' theme=STRING
+        'lvl' '=' lvl=INT
+        (floors+=Floor)*
+    '}';
+
+Floor:
+    'Floor' name=ID '{'
+		(rooms+=Room)*
+    '}';
+
+Room:
+	'Room' name=ID '{'
+		'size' '=' size=Sizes
+		'type' '=' type=RoomTypes
+		'floorID' '=' floor=ID
+		'connections' "=" '[' connections+=ID (',' connections+=ID)* ']'
+		(traps+=Trap)*
+	'}'
+;
+
+Trap:
+    'Trap' name=ID '{'
+        'trigger' '=' trigger=EventTrigger
+        'disarmable' '=' disarmable=BOOLEAN
+        'triggerChance' '=' triggerChance=INT
+    '}';
+
+enum BOOLEAN:
+	true | false
+;
+
+enum Sizes:
+	LARGE | MEDIUM | SMALL
+;
+
+enum RoomTypes:
+	COMBAT | TREASURE | BOSS | PUZZLE | SHOP
+;
+
+enum EventTrigger:
+    stepOn |
+    openDoor;

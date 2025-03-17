@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.xtext.dungeondsl
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xtext.dungeondsl
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.xtext.dungeondsl; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.16.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.37.0",
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: org.services,
+ org,
+ org.generator,
+ org.dungeonDSL.impl,
+ org.dungeonDSL,
+ org.serializer,
+ org.parser.antlr,
+ org.dungeonDSL.util,
+ org.scoping,
+ org.parser.antlr.internal,
+ org.validation
+Import-Package: org.apache.log4j
